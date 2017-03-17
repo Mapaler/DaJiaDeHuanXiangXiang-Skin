@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"  
+       "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">  
+<?xml-stylesheet type="text/css" href="skin-polygon.css" ?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  
+        version="1.2" viewBox="0 0 540 500">
+	<title>属性多角图</title>
+	<defs>
+		<radialGradient id="grey_blue" cx="50%" cy="50%" r="50%"
+		fx="50%" fy="50%">
+			<stop offset="50%" style="stop-color:LightSkyBlue;stop-opacity:1"/>
+			<stop offset="100%" style="stop-color:AliceBlue;stop-opacity:1"/>
+		</radialGradient>
+	</defs>
+	<g class="transBox">
+	</g>
+	<script xlink:href="skin-polygon.js"></script>
+</svg>

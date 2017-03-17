@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">  
+<plist version="1.0">
+<dict> 
+    <key>loginfirst_cj</key> 
+    <string>外面很危险，没有什么委托就不要出去了吧。</string> 
+    <key>loginfirst_sqx</key> 
+    <string>这是赛钱箱，来参拜的人会把香火钱放在里面，偶尔还会收到供奉的食物哦，不过最近来参拜的人越来越少了，是什么原因呢。</string> 
+    <key>loginfirst_yh</key> 
+    <string>恩？你说宴会啊，不行啦，筹备宴会需要钱和食物啦，而且宴会尽是招来奇怪的家伙，有机会给你认识一下，如果在这之前你没有被吃掉的话。</string> 
+    <key>loginfirst_zb</key> 
+    <string>出击治退妖怪之前都在这里进行整备，虽然没有什么东西，但是有所准备总是好的。</string> 
+    <key>loginfirst_qy</key> 
+    <string>这里原本是给前来参拜的人会挂绘马的地方，后来慢慢挂满了村民治退妖怪的委托，最近还有一些妖怪在上面留下一些委托，那么就先看看有什么委托吧。</string> 
+    <key>loginfirst_zz</key> 
+    <string>制造东西很麻烦呢，有什么需要的直接去你的世界买吧，当然我不会给你发工资的。</string> 
+    <key>loginfirst_sy</key> 
+    <string>如果你想学习幻想乡的知识，需要到人间之里的私塾，只有那里有老师呢，不过来回的路上有点危险，还是不要去得好。</string> 
+    <key>loginfirst_over</key> 
+    <string>既然你那么无聊，就去看看有什么简单的委托吧。</string> 
+</dict> 
+</plist>
