@@ -3,6 +3,9 @@
 ## 在线查看
 https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/
 
+## 百度贴吧
+[大家的幻想乡吧](http://tieba.baidu.com/f?kw=%E5%A4%A7%E5%AE%B6%E7%9A%84%E5%B9%BB%E6%83%B3%E4%B9%A1)
+
 ## License|许可协议
 大家的幻想乡-皮肤图鉴 Copyright(C) 2017 by 枫谷剑仙
 
