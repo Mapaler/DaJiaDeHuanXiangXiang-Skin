@@ -1,5 +1,5 @@
 var SVG_NS = "http://www.w3.org/2000/svg";
-var w=500,h=500,x=w/2,y=h/2,radius = 170;
+var w=550,h=500,x=w/2,y=h/2,radius = 170;
 var fontSize = 25;
 function GetQueryString(name)
 {
@@ -15,7 +15,8 @@ var rect = document.createElementNS(SVG_NS,"rect");
 rect.setAttribute("class","line");
 rect.setAttribute("width","100%");
 rect.setAttribute("height","100%");
-document.documentElement.appendChild(rect);
+//document.documentElement.appendChild(rect);
+transBox.appendChild(rect);
 //添加多边形所在圆圈
 var circle = document.createElementNS(SVG_NS,"circle");
 circle.setAttribute("class","line");
@@ -46,24 +47,24 @@ function drawPolygon(arr)
 	{
 		var radian = radStep * si - Math.PI/2; //当前弧度
 		boxPointArr.push([
-			radius * Math.cos(radian),
-			radius * Math.sin(radian),
+			radius * Math.cos(radian) + x,
+			radius * Math.sin(radian) + y,
 		]);
 		var nameRadius = radius + fontSize * 2;//当前名字的半径，一般只有两个字
 		namePointArr.push([
-			nameRadius *1.1 * Math.cos(radian),
-			nameRadius * Math.sin(radian),
+			nameRadius *1.1 * Math.cos(radian) + x,
+			nameRadius * Math.sin(radian) + y,
 		]);
 		var attr = arr[si]; //当前属性值
 		var attrRadius = radius * (attr.value / attr.max);//当前属性的半径
 		attrPointArr.push([
-			attrRadius * Math.cos(radian),
-			attrRadius * Math.sin(radian),
+			attrRadius * Math.cos(radian) + x,
+			attrRadius * Math.sin(radian) + y,
 		]);
 		var valueRadius = attrRadius + fontSize;//当前属值的半径
 		valuePointArr.push([
-			valueRadius * Math.cos(radian),
-			valueRadius * Math.sin(radian),
+			valueRadius * Math.cos(radian) + x,
+			valueRadius * Math.sin(radian) + y,
 		]);
 	}
 	//底多边形的points属性用字符串
@@ -84,13 +85,13 @@ function drawPolygon(arr)
 	lineGroup.setAttribute("class","lineGroup");
 	for (var si=0;si<len;si++)
 	{
-		var ox =0,oy=0,toP=boxPointArr[si];
+		var ox =x,oy=y,toP=boxPointArr[si];
 		var line = document.createElementNS(SVG_NS,"line");
 		line.setAttribute("class","line");
 		line.setAttribute("x1",ox);
 		line.setAttribute("y1",oy);
-		line.setAttribute("x2",ox+toP[0]);
-		line.setAttribute("y2",ox+toP[1]);
+		line.setAttribute("x2",toP[0]);
+		line.setAttribute("y2",toP[1]);
 		lineGroup.appendChild(line);
 	}
 	transBox.appendChild(lineGroup);
@@ -112,15 +113,15 @@ function drawPolygon(arr)
 		var bP=namePointArr[si],aP=valuePointArr[si];
 		var ntext = document.createElementNS(SVG_NS,"text");
 		ntext.setAttribute("class","text text-name");
-		ntext.innerHTML = attr.name;
 		ntext.setAttribute("x",bP[0] - fontSize);
 		ntext.setAttribute("y",bP[1] + fontSize/2);
+		ntext.textContent = attr.name;
 		nameGroup.appendChild(ntext);
 		var atext = document.createElementNS(SVG_NS,"text");
 		atext.setAttribute("class","text text-value");
-		atext.innerHTML = attr.value;
 		atext.setAttribute("x",aP[0] - fontSize/2);
 		atext.setAttribute("y",aP[1] + fontSize/2);
+		atext.textContent = attr.value;
 		valueGroup.appendChild(atext);
 	}
 	transBox.appendChild(nameGroup);

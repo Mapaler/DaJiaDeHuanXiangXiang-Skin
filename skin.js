@@ -33,7 +33,7 @@ if(typeof(GM_xmlhttpRequest) == "undefined")
 }
 
 //通用的获取XML数据函数，返回
-var getXML = function(url, callcack, isJSON = true)
+var getXML = function(url, callcack, isJSON)
 {
 	if (typeof(isJSON) == "undefined") isJSON = true;
 	var _this = this;
@@ -126,20 +126,20 @@ function dealSkinJSON(xmlObj)
 	console.log("总共有" + skinCount + "个皮肤");
 	console.log(xmlObj);
 	
+	/*
 	//需要部分截图时用
-	//for (var si=0;si<5;si++) //生成5个人
-	for (var si=0;si<skinList.length;si++) //生成全部
+	for (var si=0;si<5;si++) //生成5个人
+	//for (var si=0;si<skinList.length;si++) //生成全部
 	{
 		var item = skinList[si];
 		var li = creatSkinBanner(item);
 		ul.appendChild(li);
 	}
-	/*
+	*/
 	skinList.forEach(function(item){
 		var li = creatSkinBanner(item);
 		ul.appendChild(li);
 	})
-	*/
 	document.body.appendChild(ul);
 }
 //创建人物信息  
@@ -238,12 +238,11 @@ function creatSkinBanner(skin)
 						return had; //返回能宴出当前皮肤的人物
 					});
 	var infos = {
-		"姓名":card.cardname,
-		"皮肤ID":skin.skinid,
+		"皮肤ID":card.cardname + "，" +skin.skinid,
 		"任务获得":questsArr.length>0?questsArr.map(function(item){return "任务ID：" + item.questsid + "，" + item.cyclename + "，" + item.name + "，" + item.true_content }):[], //当有任务时，原来的任务列表生成字符串
-		"被他们宴出-小":cardArr1.length>0?cardArr1.map(function(item){return item.cardname}).join("，"):[],
-		"被他们宴出-中":cardArr2.length>0?cardArr2.map(function(item){return item.cardname}).join("，"):[],
-		"被他们宴出-大":cardArr3.length>0?cardArr3.map(function(item){return item.cardname}).join("，"):[],
+		"限定邀请人-小":cardArr1.length>0?cardArr1.map(function(item){return item.cardname}).join("，"):[],
+		"限定邀请人-中":cardArr2.length>0?cardArr2.map(function(item){return item.cardname}).join("，"):[],
+		"限定邀请人-大":cardArr3.length>0?cardArr3.map(function(item){return item.cardname}).join("，"):[],
 		"赴宴话语":[skin.description1,skin.description2],
 		"首页话语":[skin.dialog1,skin.dialog2,skin.dialog3,skin.dialog4],
 	};

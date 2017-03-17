@@ -3,7 +3,7 @@
        "http://www.w3.org/TR/2001/REC-SVG-20050904/DTD/svg11.dtd">  
 <?xml-stylesheet type="text/css" href="skin-polygon.css" ?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  
-        version="1.2" viewBox="0 0 540 500">
+        version="1.2" viewBox="0 0 550 500">
 	<title>属性多角图</title>
 	<defs>
 		<radialGradient id="grey_blue" cx="50%" cy="50%" r="50%"

@@ -5,6 +5,7 @@ ul
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	font-family: "Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .banner
 {
@@ -51,7 +52,7 @@ ul
 	position: absolute;
 	top:0;
 	left:0;
-	background-image: linear-gradient(4deg, rgba(0, 0, 0, .5) 15%, transparent 15%, transparent 90%, rgba(0, 0, 0, .5) 90%);
+	background-image: linear-gradient(4deg, rgba(0, 0, 0, .5) 15%, transparent 15.2%, transparent 90%, rgba(0, 0, 0, .5) 90.2%);
 }
 .head .cardname, .head .racename,.head .skinname, .head .author
 {
@@ -99,7 +100,7 @@ ul
 }
 .detail
 {
-	width: calc(100% - 1200px);
+	width: calc(100% - 1150px);
 	height:100%;
 	margin: 0;
 	float:left;
@@ -126,6 +127,14 @@ ul
 }
 .spell_card
 {
-	width: 500px;
+	width: 450px;
 	height:100%;
+}
+.spell_card .details-dl .title
+{
+	width: 100px;
+}
+.spell_card .details-dl .content
+{
+	margin-left: 100px;
 }

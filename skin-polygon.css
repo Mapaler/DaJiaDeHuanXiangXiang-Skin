@@ -1,10 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*
 .transBox
 {
 	transform: translate(50%,50%);
-}
+}*/
 .line
 {
 	fill:none;
@@ -21,10 +22,6 @@
 .line,.background
 {
 	stroke:brown;
-}
-.transBox
-{
-	transform: translate(50%,50%);
 }
 .text{
 	font-size:25px;
