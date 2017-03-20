@@ -148,3 +148,30 @@ ul
 {
 	margin-left: 100px;
 }
+.progress
+{
+	height: 22px;
+	line-height: 17px;
+	background: #ddd;
+	box-sizing: border-box;
+	box-shadow: 0 0 2px black;
+}
+.progress div
+{
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+	box-sizing: border-box;
+	overflow: hidden;
+	text-shadow: black 1px 0 1px,black 0 1px 1px;
+}
+.progress-faith
+{
+	background: LightGreen;
+	border: 2px Green solid;
+}
+.progress-food
+{
+	background: white;
+	border: 2px Black solid;
+}
