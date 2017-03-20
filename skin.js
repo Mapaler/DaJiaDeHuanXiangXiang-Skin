@@ -122,6 +122,7 @@ function dealSkinJSON(xmlObj)
 {
 	var skinList = xmlObj.jsonArray;
 	var ul = document.createElement("ul");
+	ul.className = "banner-list"
 	
 	var binfo = document.querySelector("#basic-info");
 	var skinCount=skinList.length; //皮肤个数
@@ -224,7 +225,7 @@ function creatSkinBanner(skin, skinIndex)
 		lnk.innerHTML = name;
 		lnk.href = "http://thwiki.cc/" + name;
 		lnk.target = "_blank";
-		lnk.title = "前往THBWiki查看该角色设定资料";
+		lnk.title = "前往THBWiki看看我来自哪部东方作品";
 		return lnk;
 	}
 	sid = skin.skinid;	//皮肤ID
@@ -337,7 +338,7 @@ function creatSkinBanner(skin, skinIndex)
 		{
 			return [
 				spl.name + " " + spl.spell_point + " lv" + spl.need_level + "",
-				spl.spell_rate + "%几率释放",
+				"基础释放率 " + spl.spell_rate + "%",
 				spl.content,
 				];
 		}
