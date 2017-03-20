@@ -182,4 +182,5 @@ ul
 	background-size: 50% 50%;
 	background-repeat: no-repeat;
 	background-position: 50% 100%;
+	box-shadow: #666 0 -2px 2px inset; 
 }
