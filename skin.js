@@ -4,6 +4,7 @@ window.onload = function()
 	start();
 }
 var cardXML,skinXML,questsXML,spellXML;
+var maxConsume = 0;
 //访GM_xmlhttpRequest函数v1.3
 if(typeof(GM_xmlhttpRequest) == "undefined")
 {
@@ -122,37 +123,53 @@ function dealSkinJSON(xmlObj)
 	var skinList = xmlObj.jsonArray;
 	var ul = document.createElement("ul");
 	
+	var binfo = document.querySelector("#basic-info");
 	var skinCount=skinList.length; //皮肤个数
-	console.log("总共有" + skinCount + "个皮肤");
-	console.log(xmlObj);
+	binfo.innerHTML = "总共有" + skinCount + "个皮肤";
+	//console.log("总共有" + skinCount + "个皮肤");
+	//console.log(xmlObj);
 	
+	//获取最大消耗
+	maxConsume = skinList.map(function(item){
+		return parseInt(item.use_faith) + parseInt(item.use_food);
+	}).sort(function(a,b){return a<b})[0];
+
+
 	/*
 	//需要部分截图时用
 	for (var si=0;si<5;si++) //生成5个人
 	//for (var si=0;si<skinList.length;si++) //生成全部
 	{
 		var item = skinList[si];
-		var li = creatSkinBanner(item);
+		var li = creatSkinBanner(item, si);
 		ul.appendChild(li);
 	}
 	*/
-	skinList.forEach(function(item){
-		var li = creatSkinBanner(item);
+	skinList.forEach(function(item, index){
+		var li = creatSkinBanner(item, index);
 		ul.appendChild(li);
 	})
+
 	document.body.appendChild(ul);
 }
 //创建人物信息  
-function creatSkinBanner(skin)
+function creatSkinBanner(skin, skinIndex)
 {
 	//化简创建元素
-	function creatElmt(tag, classnName, innerHTML)
+	function creatElmt(tag, classnName, inner)
 	{
-		var element = document.createElement(tag);
-		element.className = classnName;
-		if (typeof(innerHTML) != "undefined") element.innerHTML = innerHTML;
-		return element;
+		var dom = document.createElement(tag);
+		dom.className = classnName;
+		if (typeof(inner) != "undefined")
+		{
+			if(inner instanceof HTMLElement) //如果传入的是HTML元素
+				dom.appendChild(inner);
+			else
+				dom.innerHTML = inner;
+		}
+		return dom;
 	}
+	//创建简介
 	function buildDetail(infoJSON)
 	{
 		var dl = creatElmt("dl","details-dl");
@@ -164,7 +181,7 @@ function creatSkinBanner(skin)
 			var dt = creatElmt("dt","title",title);
 			dl.appendChild(dt);
 			
-			if (detail instanceof Array){ //如果是数组
+			if (detail instanceof Array){ //如果是数组（文本）
 				if (detail.length == 0) detail.push("-");
 				detail.forEach(function(item){
 					var dd = creatElmt("dd","content",item);
@@ -178,12 +195,25 @@ function creatSkinBanner(skin)
 		}
 		return dl;
 	}
+	//创建SVG多边图
 	function creatPolygonSVG(valueArr)
 	{
 		var svg = document.createElement("embed");
 		svg.type="image/svg+xml";
 		svg.src = "skin-polygon.svg?attr=" + encodeURIComponent(JSON.stringify(valueArr));
 		return svg;
+	}
+	//创建消耗条
+	function buildConsume(faith, food)
+	{
+		var bar = creatElmt("div","progress");
+		var faithBar = creatElmt("div","progress-faith",faith);
+		faithBar.style.width = (faith / maxConsume * 100) + "%";
+		var foodBar = creatElmt("div","progress-food",food);
+		foodBar.style.width = (food / maxConsume * 100) + "%";
+		bar.appendChild(faithBar);
+		bar.appendChild(foodBar);
+		return bar;
 	}
 	sid = skin.skinid;	//皮肤ID
 	cid = skin.cardid;	//角色ID
@@ -238,13 +268,18 @@ function creatSkinBanner(skin)
 						return had; //返回能宴出当前皮肤的人物
 					});
 	var infos = {
-		"皮肤ID":card.cardname + "，" +skin.skinid,
+		"角色名": card.cardname,
+		"皮肤ID": "No." + (skinIndex+1) + " " +skin.skinid,
 		"任务获得":questsArr.length>0?questsArr.map(function(item){return "任务ID：" + item.questsid + "，" + item.cyclename + "，" + item.name + "，" + item.true_content }):[], //当有任务时，原来的任务列表生成字符串
-		"限定邀请人-小":cardArr1.length>0?cardArr1.map(function(item){return item.cardname}).join("，"):[],
-		"限定邀请人-中":cardArr2.length>0?cardArr2.map(function(item){return item.cardname}).join("，"):[],
-		"限定邀请人-大":cardArr3.length>0?cardArr3.map(function(item){return item.cardname}).join("，"):[],
-		"赴宴话语":[skin.description1,skin.description2],
-		"首页话语":[skin.dialog1,skin.dialog2,skin.dialog3,skin.dialog4],
+		"宴请人-小":cardArr1.length>0?cardArr1.map(function(item){return item.cardname}).join("，"):[],
+		"宴请人-中":cardArr2.length>0?cardArr2.map(function(item){return item.cardname}).join("，"):[],
+		"宴请人-大":cardArr3.length>0?cardArr3.map(function(item){return item.cardname}).join("，"):[],
+		"初次见面":skin.description1,
+		"再次见面":skin.description2,
+		"早上好":skin.dialog1,
+		"中午好":skin.dialog2,
+		"下午好":skin.dialog3,
+		"晚上好":skin.dialog4,
 	};
 	var detailDL = buildDetail(infos);
 	detail.appendChild(detailDL);
@@ -253,7 +288,7 @@ function creatSkinBanner(skin)
 	//创建属性八边图
 	var attribute = creatElmt("div", "attribute");
 	banner.appendChild(attribute);
-	var attrSVG = creatPolygonSVG([
+	var attrInfoArr = [
 		{name:"生命",value: parseInt(card.hp) + parseInt(skin.hp) , max:500},
 		{name:"灵力",value: parseInt(card.atk_rang) + parseInt(skin.atk_rang) , max:100},
 		{name:"命中",value: parseInt(card.hitrate) + parseInt(skin.hitrate) , max:100},
@@ -263,8 +298,17 @@ function creatSkinBanner(skin)
 		{name:"幸运",value: parseInt(card.lucky) + parseInt(skin.lucky) , max:100},
 		{name:"暴击",value: parseInt(card.crit) + parseInt(skin.crit) , max:100},
 		{name:"力量",value: parseInt(card.atk_mel) + parseInt(skin.atk_mel) , max:100},
-	]);
+	];
+	var attrSVG = creatPolygonSVG(attrInfoArr);
 	attribute.appendChild(attrSVG);
+	//创建属性值合计
+	var attrCount = creatElmt("div", "attr-count", [
+		"9项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value;},0) + " ",
+		"去血合计" + attrInfoArr.reduce(function(previous, item, index){ if(index >0)return previous + item.value;else return previous;},0) + " ",
+		"去格挡合计" + attrInfoArr.reduce(function(previous, item, index){ if(index >0 && index!=5)return previous + item.value;else return previous;},0) + " ",
+		].join("，")
+	);
+	attribute.appendChild(attrCount);
 
 	//创建符卡
 	var spell_card = creatElmt("div", "spell_card");
@@ -280,7 +324,7 @@ function creatSkinBanner(skin)
 		if (typeof(spl) != "undefined")
 		{
 			return [
-				spl.name + " 花费" + spl.spell_point + " lv" + spl.need_level + "学习",
+				spl.name + " " + spl.spell_point + " lv" + spl.need_level + "",
 				spl.spell_rate + "%几率释放",
 				spl.content,
 				];
@@ -323,7 +367,10 @@ function creatSkinBanner(skin)
 				}
 			})(parseInt(skin.range));
 	var spells = {
-		"出击消耗": skin.use_faith + " 信仰，" + skin.use_food + " 饭团",
+		"出击消耗": [
+					skin.use_faith + " 信仰，" + skin.use_food + " 饭团，合计" + (parseInt(skin.use_faith) + parseInt(skin.use_food)) + "",
+					buildConsume(skin.use_faith,skin.use_food),
+					],
 		"攻击类型": aType + "，射程 " + aRange + "",
 		"攻击符卡":crtSpellArr(spellXML.json[spellidA]),
 		"防御符卡":crtSpellArr(spellXML.json[spellidB]),
