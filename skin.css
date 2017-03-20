@@ -151,10 +151,12 @@ ul
 .progress
 {
 	height: 22px;
-	line-height: 17px;
+	line-height: 20px;
+	border-radius: 2px;
 	background: #ddd;
 	box-sizing: border-box;
 	box-shadow: 0 0 2px black;
+	background-image: linear-gradient(90deg, transparent 19.8%, red 20%, transparent 20.2%, transparent 39.8%, red 40%, transparent 40.2% , transparent 59.8%, red 60%, transparent 60.2% , transparent 79.8%, red 80%, transparent 80.2%);
 }
 .progress div
 {
@@ -163,15 +165,21 @@ ul
 	text-align: center;
 	box-sizing: border-box;
 	overflow: hidden;
-	text-shadow: black 1px 0 1px,black 0 1px 1px;
 }
 .progress-faith
 {
 	background: LightGreen;
-	border: 2px Green solid;
+	border: 1px Green solid;
+	background-image: linear-gradient(0deg, green, transparent);
+	border-radius: 2px;
 }
 .progress-food
 {
 	background: white;
-	border: 2px Black solid;
+	border: 1px Black solid;
+	border-radius: 13px 13px 5px 5px;
+	background-image: linear-gradient(black, black);
+	background-size: 50% 50%;
+	background-repeat: no-repeat;
+	background-position: 50% 100%;
 }

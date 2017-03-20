@@ -132,10 +132,11 @@ function dealSkinJSON(xmlObj)
 	//获取最大消耗
 	maxConsume = skinList.map(function(item){
 		return parseInt(item.use_faith) + parseInt(item.use_food);
-	}).sort(function(a,b){return a<b})[0];
+	});
+	maxConsume = maxConsume.sort(function(a,b){return a<b?1:-1});
+	//console.log("最大消耗",maxConsume);
+	maxConsume = maxConsume[0];
 
-
-	/*
 	//需要部分截图时用
 	for (var si=0;si<5;si++) //生成5个人
 	//for (var si=0;si<skinList.length;si++) //生成全部
@@ -144,11 +145,12 @@ function dealSkinJSON(xmlObj)
 		var li = creatSkinBanner(item, si);
 		ul.appendChild(li);
 	}
-	*/
+	/*
 	skinList.forEach(function(item, index){
 		var li = creatSkinBanner(item, index);
 		ul.appendChild(li);
 	})
+	*/
 
 	document.body.appendChild(ul);
 }
@@ -208,9 +210,9 @@ function creatSkinBanner(skin, skinIndex)
 	{
 		var bar = creatElmt("div","progress");
 		var faithBar = creatElmt("div","progress-faith",faith);
-		faithBar.style.width = (faith / maxConsume * 100) + "%";
+		faithBar.style.width = parseInt(faith / maxConsume * 100) + "%";
 		var foodBar = creatElmt("div","progress-food",food);
-		foodBar.style.width = (food / maxConsume * 100) + "%";
+		foodBar.style.width = parseInt(food / maxConsume * 100) + "%";
 		bar.appendChild(faithBar);
 		bar.appendChild(foodBar);
 		return bar;
@@ -367,10 +369,12 @@ function creatSkinBanner(skin, skinIndex)
 				}
 			})(parseInt(skin.range));
 	var spells = {
-		"出击消耗": [
+		"出击消耗": buildConsume(parseInt(skin.use_faith),parseInt(skin.use_food)),
+		/*[
 					skin.use_faith + " 信仰，" + skin.use_food + " 饭团，合计" + (parseInt(skin.use_faith) + parseInt(skin.use_food)) + "",
-					buildConsume(skin.use_faith,skin.use_food),
+					buildConsume(parseInt(skin.use_faith),parseInt(skin.use_food)),
 					],
+		*/
 		"攻击类型": aType + "，射程 " + aRange + "",
 		"攻击符卡":crtSpellArr(spellXML.json[spellidA]),
 		"防御符卡":crtSpellArr(spellXML.json[spellidB]),
