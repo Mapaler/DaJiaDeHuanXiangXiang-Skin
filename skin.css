@@ -112,6 +112,15 @@ ul
 	margin: 0;
 	float:left;
 }
+.detail a
+{
+	color: unset;
+	text-decoration:none;
+}
+.detail a:hover
+{
+	text-decoration:underline;
+}
 .details-dl .title
 {
 	width: 100px;

@@ -217,6 +217,16 @@ function creatSkinBanner(skin, skinIndex)
 		bar.appendChild(foodBar);
 		return bar;
 	}
+	//创建消耗条
+	function creatCharLink(name)
+	{
+		var lnk = creatElmt("a","link");
+		lnk.innerHTML = name;
+		lnk.href = "http://thwiki.cc/" + name;
+		lnk.target = "_blank";
+		lnk.title = "前往THBWiki查看该角色设定资料";
+		return lnk;
+	}
 	sid = skin.skinid;	//皮肤ID
 	cid = skin.cardid;	//角色ID
 	card = cardXML.json[cid]; //角色
@@ -270,7 +280,7 @@ function creatSkinBanner(skin, skinIndex)
 						return had; //返回能宴出当前皮肤的人物
 					});
 	var infos = {
-		"角色名": card.cardname,
+		"角色名": creatCharLink(card.cardname),
 		"皮肤ID": "No." + (skinIndex+1) + " " +skin.skinid,
 		"任务获得":questsArr.length>0?questsArr.map(function(item){return "任务ID：" + item.questsid + "，" + item.cyclename + "，" + item.name + "，" + item.true_content }):[], //当有任务时，原来的任务列表生成字符串
 		"宴请人-小":cardArr1.length>0?cardArr1.map(function(item){return item.cardname}).join("，"):[],
