@@ -137,6 +137,7 @@ function dealSkinJSON(xmlObj)
 	//console.log("最大消耗",maxConsume);
 	maxConsume = maxConsume[0];
 
+	/*
 	//需要部分截图时用
 	for (var si=0;si<5;si++) //生成5个人
 	//for (var si=0;si<skinList.length;si++) //生成全部
@@ -145,12 +146,11 @@ function dealSkinJSON(xmlObj)
 		var li = creatSkinBanner(item, si);
 		ul.appendChild(li);
 	}
-	/*
+	*/
 	skinList.forEach(function(item, index){
 		var li = creatSkinBanner(item, index);
 		ul.appendChild(li);
 	})
-	*/
 
 	document.body.appendChild(ul);
 }
