@@ -210,9 +210,9 @@ function creatSkinBanner(skin, skinIndex)
 	{
 		var bar = creatElmt("div","progress");
 		var faithBar = creatElmt("div","progress-faith",faith);
-		faithBar.style.width = parseInt(faith / maxConsume * 100) + "%";
+		faithBar.style.width = (faith / maxConsume * 100) + "%";
 		var foodBar = creatElmt("div","progress-food",food);
-		foodBar.style.width = parseInt(food / maxConsume * 100) + "%";
+		foodBar.style.width = (food / maxConsume * 100) + "%";
 		bar.appendChild(faithBar);
 		bar.appendChild(foodBar);
 		return bar;
