@@ -318,7 +318,7 @@ function creatSkinBanner(skin, skinIndex)
 	var attrCount = creatElmt("div", "attr-count", [
 		attrInfoArr.length + "项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value;},0) + " ",
 		"去血合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value;else return previous;},0) + " ",
-		"格挡值：",
+		"格挡值 ",
 		].join("，")
 	);
 	//格挡值
@@ -358,10 +358,10 @@ function creatSkinBanner(skin, skinIndex)
 					return "弹幕";
 					break;
 				case 1001:
-					return "剑术(体术)";
+					return "斩击(体术)";
 					break;
 				case 1002:
-					return "体术";
+					return "击打(体术)";
 					break;
 				default:
 					return "未知的";
