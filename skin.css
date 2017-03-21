@@ -143,6 +143,17 @@ ul
 	max-width: 380px;
 	max-height: 100%;
 }
+.block-high
+{
+	color: red;
+	text-shadow: white 0 0 2px, black 0 0 2px;
+}
+.block-low
+{
+	color: blue;
+	text-shadow: white 0 0 2px, black 0 0 2px;
+}
+
 .spell_card
 {
 	width: 24%;

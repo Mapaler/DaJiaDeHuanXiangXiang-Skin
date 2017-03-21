@@ -305,9 +305,9 @@ function creatSkinBanner(skin, skinIndex)
 		{name:"生命",value: parseInt(card.hp) + parseInt(skin.hp) , max:500},
 		{name:"灵力",value: parseInt(card.atk_rang) + parseInt(skin.atk_rang) , max:100},
 		{name:"命中",value: parseInt(card.hitrate) + parseInt(skin.hitrate) , max:100},
-		{name:"防御",value: parseInt(card.def) + parseInt(skin.def) , max:100},
 		{name:"回避",value: parseInt(card.avoid) + parseInt(skin.avoid) , max:100},
-		{name:"格挡",value: parseInt(card.block) + parseInt(skin.block) , max:100},
+		{name:"防御",value: parseInt(card.def) + parseInt(skin.def) , max:100},
+		//{name:"格挡",value: parseInt(card.block) + parseInt(skin.block) , max:100},
 		{name:"幸运",value: parseInt(card.lucky) + parseInt(skin.lucky) , max:100},
 		{name:"暴击",value: parseInt(card.crit) + parseInt(skin.crit) , max:100},
 		{name:"力量",value: parseInt(card.atk_mel) + parseInt(skin.atk_mel) , max:100},
@@ -316,11 +316,16 @@ function creatSkinBanner(skin, skinIndex)
 	attribute.appendChild(attrSVG);
 	//创建属性值合计
 	var attrCount = creatElmt("div", "attr-count", [
-		"9项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value;},0) + " ",
-		"去血合计" + attrInfoArr.reduce(function(previous, item, index){ if(index >0)return previous + item.value;else return previous;},0) + " ",
-		"去格挡合计" + attrInfoArr.reduce(function(previous, item, index){ if(index >0 && index!=5)return previous + item.value;else return previous;},0) + " ",
+		attrInfoArr.length + "项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value;},0) + " ",
+		"去血合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value;else return previous;},0) + " ",
+		"格挡值：",
 		].join("，")
 	);
+	//格挡值
+	var bV = (parseInt(card.block) + parseInt(skin.block)); //blockValue
+	var blockSpan = creatElmt("span", bV>20?"block-high":(bV<20?"block-low":"block-normal"), bV);
+	attrCount.appendChild(blockSpan);
+	
 	attribute.appendChild(attrCount);
 
 	//创建符卡
