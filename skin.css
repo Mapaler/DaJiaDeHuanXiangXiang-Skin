@@ -114,7 +114,7 @@ ul
 }
 .detail a
 {
-	color: unset;
+	color: inherit;
 	text-decoration:none;
 }
 .detail a:hover
