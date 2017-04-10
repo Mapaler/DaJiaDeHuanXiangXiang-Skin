@@ -378,7 +378,7 @@ function creatSkinBanner(skin, skinIndex)
 				case 2:
 					return "中";
 					break;
-				case 3:
+				case 3:case 4:case 5:
 					return "远";
 					break;
 				default:
@@ -387,11 +387,6 @@ function creatSkinBanner(skin, skinIndex)
 			})(parseInt(skin.range));
 	var spells = {
 		"出击消耗": buildConsume(parseInt(skin.use_faith),parseInt(skin.use_food)),
-		/*[
-					skin.use_faith + " 信仰，" + skin.use_food + " 饭团，合计" + (parseInt(skin.use_faith) + parseInt(skin.use_food)) + "",
-					buildConsume(parseInt(skin.use_faith),parseInt(skin.use_food)),
-					],
-		*/
 		"攻击类型": aType + "，射程 " + aRange + "",
 		"攻击符卡":crtSpellArr(spellXML.json[spellidA]),
 		"防御符卡":crtSpellArr(spellXML.json[spellidB]),
