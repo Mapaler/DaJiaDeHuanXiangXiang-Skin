@@ -337,6 +337,7 @@ function creatSkinBanner(skin, skinIndex)
 	var spellidA = skin.spell_card_id_atk.length>0 ? skin.spell_card_id_atk : spePrefix + "A01"; //攻击
 	var spellidB = skin.spell_card_id_def.length>0 ? skin.spell_card_id_def : spePrefix + "B01"; //防御
 	var spellidC = skin.spell_card_id_aid.length>0 ? skin.spell_card_id_aid : spePrefix + "C01"; //支援
+	var spellidD = spePrefix + "D01"; //魔力
 
 	function crtSpellArr(spl)
 	{
@@ -392,10 +393,29 @@ function creatSkinBanner(skin, skinIndex)
 		"防御符卡":crtSpellArr(spellXML.json[spellidB]),
 		"支援符卡":crtSpellArr(spellXML.json[spellidC]),
 	};
+	if (
+		typeof(spellXML.json[spellidD]) != "undefined" //必须要有魔力符卡
+			&& [ //排除没有魔力符但是其他皮肤有的情况，ES5写法
+				spellXML.json[spellidA].spell_point,
+				spellXML.json[spellidB].spell_point,
+				spellXML.json[spellidC].spell_point,
+			].some(function(str){return str.indexOf("魔力")>=0?true:false;})
+			/*
+			&& ( //排除没有魔力符但是其他皮肤有的情况
+			spellXML.json[spellidA].spell_point.indexOf("魔力")>=0 ||
+			spellXML.json[spellidB].spell_point.indexOf("魔力")>=0 ||
+			spellXML.json[spellidC].spell_point.indexOf("魔力")>=0
+			)
+			*/
+		)
+	{
+		spells["魔力符卡"] = crtSpellArr(spellXML.json[spellidD]);
+	}
 	var spellsDL = buildDetail(spells);
 	spell_card.appendChild(spellsDL);
 
 
 	return banner;
+
 }
 
