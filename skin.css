@@ -54,6 +54,12 @@ ul
 	background-repeat: no-repeat;
 	background-position: center center;
 }
+.head .qhead
+{
+	position: absolute;
+	bottom: 0;
+	background-image: url("imgdata/head.png");
+}
 .head .headcover
 {
 	position: absolute;

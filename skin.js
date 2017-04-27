@@ -3,7 +3,7 @@ window.onload = function()
 {
 	start();
 }
-var cardXML,skinXML,questsXML,spellXML;
+var cardXML,skinXML,questsXML,spellXML,qheadXML;
 var maxConsume = 0;
 //访GM_xmlhttpRequest函数v1.3
 if(typeof(GM_xmlhttpRequest) == "undefined")
@@ -34,18 +34,17 @@ if(typeof(GM_xmlhttpRequest) == "undefined")
 }
 
 //通用的获取XML数据函数，返回
-var getXML = function(url, callcack, isJSON)
+var getXML = function(url, isJSON)
 {
 	if (typeof(isJSON) == "undefined") isJSON = true;
 	var _this = this;
 	_this.url = url;
 	_this.isJSON = isJSON;
-	_this.callcack = callcack;
 	_this.json = new Object();
 	_this.keyArray = new Array();
 	_this.jsonArray = new Array();
 	_this.xml = null;
-	_this.get = function(){
+	_this.getData = function(callback){
 		GM_xmlhttpRequest({
 			method:'get',
 			url:_this.url,
@@ -67,17 +66,73 @@ var getXML = function(url, callcack, isJSON)
 					objList[keyStr] = strObj;
 				}
 				_this.json = objList;
-				_this.callcack(_this);
+				callback(_this);
 			}
 		})
 	}
-	_this.get();
+	_this.getImgdata = function(callback){
+		function getDictKeyValue(pnode,name)
+		{ /*通过Key获取值*/
+			var valueNode;
+			for (var ci=0,cil=pnode.childElementCount;ci<cil;ci++)
+			{
+				var cNode = pnode.children[ci];
+				if (cNode.textContent == name)
+				{
+					valueNode = cNode.nextElementSibling;
+				}
+			}
+			return valueNode;
+		}
+		GM_xmlhttpRequest({
+			method:'get',
+			url:_this.url,
+			responseType:'document',
+			overrideMimeType:'text/xml',
+			onload:function(response){
+				function tranToArr(istr)
+				{
+					var nstr = istr.replace(/{/igm,"[").replace(/}/igm,"]");
+					return JSON.parse(nstr);
+				}
+				_this.xml = response.responseXML;
+				var dict = _this.xml.documentElement.firstElementChild;
+				var rdict = getDictKeyValue(dict,"frames");
+				if (typeof(rdict) != "undefined")
+				{
+					console.log("frames数据",rdict);
+					var keys = [].slice.call(rdict.children).filter(function(item){return item.nodeName == "key"});
+					var dicts = [].slice.call(rdict.children).filter(function(item){return item.nodeName == "dict"});
+
+					var objList = new Object();//以对象形式储存XML中的数据
+					for (var ki=0,kil=keys.length;ki<kil;ki++)
+					{
+						var keyStr = keys[ki].textContent;
+						var vd = dicts[ki]; //储存值的dict
+						
+						var strObj = {
+							frame:tranToArr(getDictKeyValue(vd,"frame").textContent),
+							offset:tranToArr(getDictKeyValue(vd,"offset").textContent),
+							rotated:eval(getDictKeyValue(vd,"rotated").nodeName),
+							sourceColorRect:tranToArr(getDictKeyValue(vd,"sourceColorRect").textContent),
+							sourceSize:tranToArr(getDictKeyValue(vd,"sourceSize").textContent),
+						};
+						_this.jsonArray.push(strObj);
+						objList[keyStr] = strObj;
+					}
+					_this.json = objList;
+					callback(_this);
+				}
+			}
+		})
+	}
 }
 
 function start()
 {
 	//读取人物列表
-	cardXML = new getXML("data/card.plist",
+	cardXML = new getXML("data/card.plist");
+	cardXML.getData(
 		function(re)
 		{
 			dealCardList(re); //处理人物
@@ -88,7 +143,8 @@ function start()
 function dealCardList(xmlObj)
 {
 	//读取委托列表
-	questsXML = new getXML("data/quests.plist",
+	questsXML = new getXML("data/quests.plist");
+	questsXML.getData(
 		function(re)
 		{
 			dealQuestsList(re); //处理委托
@@ -99,7 +155,8 @@ function dealCardList(xmlObj)
 function dealQuestsList(xmlObj)
 {
 	//读取符卡列表
-	spellXML = new getXML("data/spell.plist",
+	spellXML = new getXML("data/spell.plist");
+	spellXML.getData(
 		function(re)
 		{
 			dealSpellList(re); //处理符卡
@@ -109,14 +166,28 @@ function dealQuestsList(xmlObj)
 //处理符卡
 function dealSpellList(xmlObj)
 {
-	//读取任务列表
-	skinXML = new getXML("data/skin.plist",
+	//读取Q版头像列表
+	qheadXML = new getXML("imgdata/head.plist");
+	qheadXML.getImgdata(
+		function(re)
+		{
+			dealQheadList(re); //处理Q版头像
+		}
+	);
+}
+//处理符卡
+function dealQheadList(xmlObj)
+{
+	//读取皮肤列表
+	skinXML = new getXML("data/skin.plist");
+	skinXML.getData(
 		function(re)
 		{
 			dealSkinJSON(re); //处理皮肤
 		}
 	);
 }
+
 //处理皮肤
 function dealSkinJSON(xmlObj)
 {
@@ -231,6 +302,7 @@ function creatSkinBanner(skin, skinIndex)
 	sid = skin.skinid;	//皮肤ID
 	cid = skin.cardid;	//角色ID
 	card = cardXML.json[cid]; //角色
+	qhead = qheadXML.json['head/' + sid + '.png']; //Q版头像
 	
 	var banner = creatElmt("li", "banner");
 	//创建立绘Box
@@ -243,8 +315,19 @@ function creatSkinBanner(skin, skinIndex)
 	head.appendChild(headimg);
 	*/
 	var headimg = creatElmt("div", "picture"); //头像
-	headimg.style.backgroundImage = 'url("char/' + sid + '.png")';
+	headimg.style.backgroundImage = 'url("imgdata/char/' + sid + '.png")';
 	head.appendChild(headimg);
+
+	var qheadimg = creatElmt("div", "qhead"); //Q版头像
+	head.appendChild(qheadimg);
+	qheadimg.style.backgroundPosition = "-" + qhead.frame[0][0] + "px -" + qhead.frame[0][1] + "px"; //图片位置偏移定位
+	var ro = qhead.rotated; //是否逆时针旋转90°
+	qheadimg.style.width = qhead.frame[1][ro?1:0] + "px"; //图像宽
+	qheadimg.style.height = qhead.frame[1][ro?0:1] + "px"; //图像高
+	if (ro) qheadimg.style.transform = "rotate(-90deg)";
+	qheadimg.style.left = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/-2:10) + "px"; //图像左边距离
+	qheadimg.style.bottom = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/2:0) + "px"; //图像低部距离
+
 	var headcover = creatElmt("div", "headcover"); //头像上方的覆盖
 	head.appendChild(headcover);
 	//var cardname = creatElmt("div", "cardname", card.cardname); //人物名
