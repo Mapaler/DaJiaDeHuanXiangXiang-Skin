@@ -16,6 +16,11 @@
 }
 .attribute
 {
+	fill:rgba(255,95,16,0.6);
+	stroke:orange;
+}
+.attribute-add
+{
 	fill:rgba(0,207,44, 0.8);
 	stroke:OliveDrab;
 }

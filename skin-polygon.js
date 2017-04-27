@@ -41,8 +41,9 @@ function drawPolygon(arr)
 	//画六角边框
 	var boxPointArr = new Array(); //储存外边框
 	var namePointArr = new Array(); //储存名字的位置
-	var attrPointArr = new Array(); //储存属性框
-	var valuePointArr = new Array(); //储存属性值的位置
+	var attrPointArr = new Array(); //储存初始属性多边形
+	var attrAddPointArr = new Array(); //储存属性值-增加值多边形
+	var valuePointArr = new Array(); //储存属性值文字的位置
 	for (var si=0;si<len;si++) //获取各点值
 	{
 		var radian = radStep * si - Math.PI/2; //当前弧度
@@ -55,13 +56,18 @@ function drawPolygon(arr)
 			nameRadius *1.1 * Math.cos(radian) + x,
 			nameRadius * Math.sin(radian) + y,
 		]);
-		var attr = arr[si]; //当前属性值
-		var attrRadius = radius * (attr.value / attr.max);//当前属性的半径
+		var attr = arr[si]; //当前属性
+		var attrRadius = radius * (attr.value / attr.max);//初始属性的半径
 		attrPointArr.push([
 			attrRadius * Math.cos(radian) + x,
 			attrRadius * Math.sin(radian) + y,
 		]);
-		var valueRadius = attrRadius + fontSize;//当前属值的半径
+		var attrAddRadius = radius * ((attr.value + attr.valueAdd) / attr.max);//属性值-增加值的半径
+		attrAddPointArr.push([
+			attrAddRadius * Math.cos(radian) + x,
+			attrAddRadius * Math.sin(radian) + y,
+		]);
+		var valueRadius = attrAddRadius + fontSize;//当前属性值文字的半径
 		valuePointArr.push([
 			valueRadius * Math.cos(radian) + x,
 			valueRadius * Math.sin(radian) + y,
@@ -71,8 +77,12 @@ function drawPolygon(arr)
 	var boxPointsStr = boxPointArr.map(function(item){
 					return item.join(" ");
 				}).join(" ");
-	//属性多边形的points属性用字符串
+	//初始属性多边形的points属性用字符串
 	var attrPointsStr = attrPointArr.map(function(item){
+					return item.join(" ");
+				}).join(" ");
+	//属性-增加值多边形的points属性用字符串
+	var attrAddPointsStr = attrAddPointArr.map(function(item){
 					return item.join(" ");
 				}).join(" ");
 	//添加底多边形
@@ -95,12 +105,19 @@ function drawPolygon(arr)
 		lineGroup.appendChild(line);
 	}
 	transBox.appendChild(lineGroup);
-	//添加属性多边形
+	if (arr.filter(function(item){return item.valueAdd != 0}).length > 0) //如果皮肤的属性有改变
+	{
+		//添加初始属性多边形
+		var aPolygon = document.createElementNS(SVG_NS,"polygon");
+		aPolygon.setAttribute("class","attribute");
+		aPolygon.setAttribute("points",attrPointsStr);
+		transBox.appendChild(aPolygon);
+	}
+	//添加属性-增加值多边形
 	var aPolygon = document.createElementNS(SVG_NS,"polygon");
-	aPolygon.setAttribute("class","attribute");
-	aPolygon.setAttribute("points",attrPointsStr);
+	aPolygon.setAttribute("class","attribute-add");
+	aPolygon.setAttribute("points",attrAddPointsStr);
 	transBox.appendChild(aPolygon);
-
 	//添加名称、值
 	//添加名称
 	var nameGroup = document.createElementNS(SVG_NS,"g");
@@ -121,7 +138,7 @@ function drawPolygon(arr)
 		atext.setAttribute("class","text text-value");
 		atext.setAttribute("x",aP[0] - fontSize/2);
 		atext.setAttribute("y",aP[1] + fontSize/2);
-		atext.textContent = attr.value;
+		atext.textContent = (attr.value + attr.valueAdd);
 		valueGroup.appendChild(atext);
 	}
 	transBox.appendChild(nameGroup);

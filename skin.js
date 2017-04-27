@@ -211,7 +211,7 @@ function dealSkinJSON(xmlObj)
 
 	/*
 	//需要部分截图时用
-	for (var si=0;si<5;si++) //生成5个人
+	for (var si=4;si<12;si++) //生成5个人
 	//for (var si=0;si<skinList.length;si++) //生成全部
 	{
 		var item = skinList[si];
@@ -385,15 +385,15 @@ function creatSkinBanner(skin, skinIndex)
 	var attribute = creatElmt("div", "attribute");
 	banner.appendChild(attribute);
 	var attrInfoArr = [
-		{name:"生命",value: parseInt(card.hp) + parseInt(skin.hp) , max:500},
-		{name:"灵力",value: parseInt(card.atk_rang) + parseInt(skin.atk_rang) , max:100},
-		{name:"命中",value: parseInt(card.hitrate) + parseInt(skin.hitrate) , max:100},
-		{name:"回避",value: parseInt(card.avoid) + parseInt(skin.avoid) , max:100},
-		{name:"防御",value: parseInt(card.def) + parseInt(skin.def) , max:100},
-		//{name:"格挡",value: parseInt(card.block) + parseInt(skin.block) , max:100},
-		{name:"幸运",value: parseInt(card.lucky) + parseInt(skin.lucky) , max:100},
-		{name:"暴击",value: parseInt(card.crit) + parseInt(skin.crit) , max:100},
-		{name:"力量",value: parseInt(card.atk_mel) + parseInt(skin.atk_mel) , max:100},
+		{name:"生命",value: parseInt(card.hp) , valueAdd: parseInt(skin.hp) , max:500},
+		{name:"灵力",value: parseInt(card.atk_rang) , valueAdd: parseInt(skin.atk_rang) , max:100},
+		{name:"命中",value: parseInt(card.hitrate) , valueAdd: parseInt(skin.hitrate) , max:100},
+		{name:"回避",value: parseInt(card.avoid) , valueAdd: parseInt(skin.avoid) , max:100},
+		{name:"防御",value: parseInt(card.def) , valueAdd: parseInt(skin.def) , max:100},
+		//{name:"格挡",value: parseInt(card.block) , valueAdd: parseInt(skin.block) , max:100},
+		{name:"幸运",value: parseInt(card.lucky) , valueAdd: parseInt(skin.lucky) , max:100},
+		{name:"暴击",value: parseInt(card.crit) , valueAdd: parseInt(skin.crit) , max:100},
+		{name:"力量",value: parseInt(card.atk_mel) , valueAdd: parseInt(skin.atk_mel) , max:100},
 	];
 	var attrSVG = creatPolygonSVG(attrInfoArr);
 	attribute.appendChild(attrSVG);
