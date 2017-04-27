@@ -4,6 +4,7 @@ window.onload = function()
 	start();
 }
 var cardXML,skinXML,questsXML,spellXML,qheadXML;
+var skinBannerArr = []; //储存生成的banner 的 li数组
 var maxConsume = 0;
 //访GM_xmlhttpRequest函数v1.3
 if(typeof(GM_xmlhttpRequest) == "undefined")
@@ -61,8 +62,16 @@ var getXML = function(url, isJSON)
 				{
 					var keyStr = keys[ki].textContent;
 					var strObj = _this.isJSON ? JSON.parse(strs[ki].textContent) : strs[ki].textContent;
+					for(var itm in strObj)
+					{ //把所有文字里的数字转成真正的数字
+						n = typeof(strObj[itm]) == "string"?Number(strObj[itm]):NaN;
+						if (!isNaN(n))
+						{
+							strObj[itm] = n;
+						}
+					}
 					_this.keyArray.push(keyStr);
-					_this.jsonArray.push(_this.isJSON ? JSON.parse(strs[ki].textContent) : strs[ki].textContent);
+					_this.jsonArray.push(strObj);
 					objList[keyStr] = strObj;
 				}
 				_this.json = objList;
@@ -100,7 +109,6 @@ var getXML = function(url, isJSON)
 				var rdict = getDictKeyValue(dict,"frames");
 				if (typeof(rdict) != "undefined")
 				{
-					console.log("frames数据",rdict);
 					var keys = [].slice.call(rdict.children).filter(function(item){return item.nodeName == "key"});
 					var dicts = [].slice.call(rdict.children).filter(function(item){return item.nodeName == "dict"});
 
@@ -130,6 +138,17 @@ var getXML = function(url, isJSON)
 
 function start()
 {
+	var sortType = document.querySelector("#sort-type");
+	sortType.onchange = function()
+	{
+		console.log(this.value);
+		//skinSort(function(a,b){return (a.skin.use_faith+a.skin.use_food)-(b.skin.use_faith+b.skin.use_food)});
+		skinSort(eval(
+			"(function(a,b){"+this.value+"})"
+			));
+	};
+	//skinSort(cpFn)
+
 	//读取人物列表
 	cardXML = new getXML("data/card.plist");
 	cardXML.getData(
@@ -138,6 +157,16 @@ function start()
 			dealCardList(re); //处理人物
 		}
 	);
+}
+function skinSort(cpFn)
+{
+	if (typeof(cpFn) == "undefined") cpFn = function(){return 0;}
+	var ul = document.querySelector("#banner-list");
+	console.log(cpFn);
+	var sortArr = skinBannerArr.sort(cpFn);
+	sortArr.forEach(function(item){
+		ul.appendChild(item);
+	});//把数组生成到列表里	
 }
 //处理人物
 function dealCardList(xmlObj)
@@ -187,13 +216,10 @@ function dealQheadList(xmlObj)
 		}
 	);
 }
-
 //处理皮肤
 function dealSkinJSON(xmlObj)
 {
 	var skinList = xmlObj.jsonArray;
-	var ul = document.createElement("ul");
-	ul.className = "banner-list"
 	
 	var binfo = document.querySelector("#basic-info");
 	var skinCount=skinList.length; //皮肤个数
@@ -203,28 +229,29 @@ function dealSkinJSON(xmlObj)
 	
 	//获取最大消耗
 	maxConsume = skinList.map(function(item){
-		return parseInt(item.use_faith) + parseInt(item.use_food);
+		return item.use_faith + item.use_food;
 	});
 	maxConsume = maxConsume.sort(function(a,b){return a<b?1:-1});
 	//console.log("最大消耗",maxConsume);
 	maxConsume = maxConsume[0];
 
-	/*
 	//需要部分截图时用
-	for (var si=4;si<12;si++) //生成5个人
+	for (var si=3;si<12;si++) //生成5个人
 	//for (var si=0;si<skinList.length;si++) //生成全部
 	{
 		var item = skinList[si];
-		var li = creatSkinBanner(item, si);
-		ul.appendChild(li);
+		skinBannerArr.push(creatSkinBanner(item, si));
 	}
+	/*
+	skinList.forEach(function(item, si){
+		skinBannerArr.push(creatSkinBanner(item, si));
+	}); //将所有生成的li都添加到数组
 	*/
-	skinList.forEach(function(item, index){
-		var li = creatSkinBanner(item, index);
-		ul.appendChild(li);
-	})
 
-	document.body.appendChild(ul);
+	var sortType = document.querySelector("#sort-type");
+	sortType.onchange();
+	//skinSort(); //不进行排序，直接添加
+
 }
 //创建人物信息  
 function creatSkinBanner(skin, skinIndex)
@@ -305,6 +332,9 @@ function creatSkinBanner(skin, skinIndex)
 	qhead = qheadXML.json['head/' + sid + '.png']; //Q版头像
 	
 	var banner = creatElmt("li", "banner");
+	banner.index = skinIndex;; //储存对应的皮肤序号
+	banner.skin = skin; //储存对应的皮肤对象
+	banner.card = card; //储存对应的人物对象
 	//创建立绘Box
 	var head = creatElmt("div", "head");
 	banner.appendChild(head);
@@ -385,15 +415,15 @@ function creatSkinBanner(skin, skinIndex)
 	var attribute = creatElmt("div", "attribute");
 	banner.appendChild(attribute);
 	var attrInfoArr = [
-		{name:"生命",value: parseInt(card.hp) , valueAdd: parseInt(skin.hp) , max:500},
-		{name:"灵力",value: parseInt(card.atk_rang) , valueAdd: parseInt(skin.atk_rang) , max:100},
-		{name:"命中",value: parseInt(card.hitrate) , valueAdd: parseInt(skin.hitrate) , max:100},
-		{name:"回避",value: parseInt(card.avoid) , valueAdd: parseInt(skin.avoid) , max:100},
-		{name:"防御",value: parseInt(card.def) , valueAdd: parseInt(skin.def) , max:100},
-		//{name:"格挡",value: parseInt(card.block) , valueAdd: parseInt(skin.block) , max:100},
-		{name:"幸运",value: parseInt(card.lucky) , valueAdd: parseInt(skin.lucky) , max:100},
-		{name:"暴击",value: parseInt(card.crit) , valueAdd: parseInt(skin.crit) , max:100},
-		{name:"力量",value: parseInt(card.atk_mel) , valueAdd: parseInt(skin.atk_mel) , max:100},
+		{name:"生命",value: card.hp , valueAdd: skin.hp , max:500},
+		{name:"灵力",value: card.atk_rang , valueAdd: skin.atk_rang , max:100},
+		{name:"命中",value: card.hitrate , valueAdd: skin.hitrate , max:100},
+		{name:"回避",value: card.avoid , valueAdd: skin.avoid , max:100},
+		{name:"防御",value: card.def , valueAdd: skin.def , max:100},
+		//{name:"格挡",value: card.block , valueAdd: skin.block , max:100},
+		{name:"幸运",value: card.lucky , valueAdd: skin.lucky , max:100},
+		{name:"暴击",value: card.crit , valueAdd: skin.crit , max:100},
+		{name:"力量",value: card.atk_mel , valueAdd: skin.atk_mel , max:100},
 	];
 	var attrSVG = creatPolygonSVG(attrInfoArr);
 	attribute.appendChild(attrSVG);
@@ -406,7 +436,7 @@ function creatSkinBanner(skin, skinIndex)
 		].join("，")
 	);
 	//格挡值
-	var bV = (parseInt(card.block) + parseInt(skin.block)); //blockValue
+	var bV = (card.block + skin.block); //blockValue
 	var blockSpan = creatElmt("span", bV>20?"block-high":(bV<20?"block-low":"block-normal"), bV);
 	attrCount.appendChild(blockSpan);
 	
@@ -451,7 +481,7 @@ function creatSkinBanner(skin, skinIndex)
 				default:
 					return "未知的";
 				}
-			})(parseInt(skin.atktype));
+			})(skin.atktype);
 	//攻击范围
 	aRange =(function(n){
 				switch(n)
@@ -468,9 +498,9 @@ function creatSkinBanner(skin, skinIndex)
 				default:
 					return "未知的";
 				}
-			})(parseInt(skin.range));
+			})(skin.range);
 	var spells = {
-		"出击消耗": buildConsume(parseInt(skin.use_faith),parseInt(skin.use_food)),
+		"出击消耗": buildConsume(skin.use_faith,skin.use_food),
 		"攻击类型": aType + "，射程 " + aRange + "",
 		"攻击符卡":crtSpellArr(spellXML.json[spellidA]),
 		"防御符卡":crtSpellArr(spellXML.json[spellidB]),

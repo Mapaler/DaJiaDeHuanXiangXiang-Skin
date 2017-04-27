@@ -20,7 +20,18 @@
         <br> 本地包里找不到皮肤的普通宴出规则，所以没有普通宴出的信息，但为什么本地有这些限定的获取信息我也不知道。有些普通皮肤也有限定宴请人信息，猜测可能是提高宴出几率。
         <br>
     </p>
+    <div id="skin-sort">
+        <label>皮肤排序方式
+        <select id="sort-type">
+            <option value="return a.index-b.index;">按照皮肤编号</option>
+            <option value="var as=a.skin,bs=b.skin;return (as.use_faith+as.use_food)-(bs.use_faith+bs.use_food);">按照出击消耗量</option>
+            <option value="var as=a.skin,bs=b.skin;return as.use_faith-bs.use_faith;">按照信仰消耗量</option>
+            <option value="var as=a.skin,bs=b.skin;return as.use_food-bs.use_food;">按照饭团消耗量</option>
+        </select>
+        </label>
+    </div>
     <div id="basic-info"></div>
+	<ul id="banner-list"></ul>
 </body>
 
 </html>
