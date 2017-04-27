@@ -235,6 +235,7 @@ function dealSkinJSON(xmlObj)
 	//console.log("最大消耗",maxConsume);
 	maxConsume = maxConsume[0];
 
+	/*
 	//需要部分截图时用
 	for (var si=3;si<12;si++) //生成5个人
 	//for (var si=0;si<skinList.length;si++) //生成全部
@@ -242,11 +243,10 @@ function dealSkinJSON(xmlObj)
 		var item = skinList[si];
 		skinBannerArr.push(creatSkinBanner(item, si));
 	}
-	/*
+	*/
 	skinList.forEach(function(item, si){
 		skinBannerArr.push(creatSkinBanner(item, si));
 	}); //将所有生成的li都添加到数组
-	*/
 
 	var sortType = document.querySelector("#sort-type");
 	sortType.onchange();
