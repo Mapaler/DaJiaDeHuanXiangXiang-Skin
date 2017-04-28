@@ -429,9 +429,9 @@ function creatSkinBanner(skin, skinIndex)
 	attribute.appendChild(attrSVG);
 	//创建属性值合计
 	var attrCount = creatElmt("div", "attr-count", [
-		attrInfoArr.length + "项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value;},0),
-		"血÷5合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value;else return previous + item.value/5;},0),
-		"<br>去血合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value;else return previous;},0),
+		attrInfoArr.length + "项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value + item.valueAdd;},0),
+		"血÷5合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value + item.valueAdd;else return previous + (item.value + item.valueAdd)/5;},0),
+		"<br>去血合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value + item.valueAdd;else return previous;},0),
 		"格挡值 ",
 		].join("，")
 	);

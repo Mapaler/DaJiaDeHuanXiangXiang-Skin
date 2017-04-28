@@ -13,8 +13,8 @@
     <p>
         目前目前是1.0.1.6版本的数据，146张皮肤图片加Q版头像会<b>耗费约 45MB 的流量</b>，其他网页程序可能有 1MB。<br> 数据是每次你访问本页面的时候即时从apk解压的游戏原始数据提取，源代码见
         <a href="https://github.com/Mapaler/DaJiaDeHuanXiangXiang-Skin" target="_blank">GitHub仓库</a>。“spell.plist”因为字符不符合xml规范，稍作了修改（"&amp;"→"&amp;amp;"），其他都是原样的。<br>
-        <a href="char/ATHH00001.png" target="_blank">年兽</a>、<a href="char/ATHH00002.png" target="_blank">吸血鬼？</a>、<a href="char/ATHH00003.png" target="_blank">嫦娥？</a>、<a href="char/ATHH00004.png" target="_blank">玉兔？</a>4个BOSS专用，
-        <a href="char/ATHZ00401.png" target="_blank">矜羯罗</a>、<a href="char/ATHZ00501.png" target="_blank">依莉斯</a>、<a href="char/ATHZ00601.png" target="_blank">萨丽爱尔</a>3个未启用人物未显示
+        <a href="imgdata/char/ATHH00001.png" target="_blank">年兽</a>、<a href="imgdata/char/ATHH00002.png" target="_blank">吸血鬼？</a>、<a href="imgdata/char/ATHH00003.png" target="_blank">嫦娥？</a>、<a href="imgdata/char/ATHH00004.png" target="_blank">玉兔？</a>4个BOSS专用，
+        <a href="imgdata/char/ATHZ00401.png" target="_blank">矜羯罗</a>、<a href="imgdata/char/ATHZ00501.png" target="_blank">依莉斯</a>、<a href="imgdata/char/ATHZ00601.png" target="_blank">萨丽爱尔</a>3个未启用人物未显示
         <br>计算量较大，E5每次打开都要卡，弱机就慢慢等吧。显示不正常时推荐用最新版火狐浏览器。
         <br>理论上只要游戏客户端结构不变，下载apk解包更新相应文件马上就能更新这个页面。 但是实际上的战斗判定和是否被宴请到其实是看的游戏服务器返回，与本地游戏包无关。所以这些信息仅作参考，不一定是完全正确的。
         <br> 本地包里找不到皮肤的普通宴出规则，所以没有普通宴出的信息，但为什么本地有这些限定的获取信息我也不知道。有些普通皮肤也有限定宴请人信息，猜测可能是提高宴出几率。
@@ -23,11 +23,22 @@
     <div id="skin-sort">
         <label>皮肤排序方式
         <select id="sort-type">
-            <option value="return a.index-b.index;">按照皮肤编号</option>
-            <option value="var as=a.skin,bs=b.skin;return (as.use_faith+as.use_food)-(bs.use_faith+bs.use_food);">按照出击消耗量</option>
-            <option value="var as=a.skin,bs=b.skin;return as.use_faith-bs.use_faith;">按照信仰消耗量</option>
-            <option value="var as=a.skin,bs=b.skin;return as.use_food-bs.use_food;">按照饭团消耗量</option>
-            <option value="return a.index-b.index;">其他的等待添加</option>
+            <option value="return a.index-b.index;">皮肤编号</option>
+            <option value="var as=a.skin,bs=b.skin;return (as.use_faith+as.use_food)-(bs.use_faith+bs.use_food);">出击总消耗量</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.hp+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">8项属性合计</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.hp/5+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">8项属性，其中血÷5合计</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">去血7项属性合计</option>
+            <option value="var as=a.skin,bs=b.skin;return (as.use_faith==bs.use_faith)?(as.use_food-bs.use_food):(as.use_faith-bs.use_faith);">信仰消耗量</option>
+            <option value="var as=a.skin,bs=b.skin;return (as.use_food==bs.use_food)?(as.use_faith-bs.use_faith):(as.use_food-bs.use_food);">饭团消耗量</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.atk_mel+as.atk_mel)-(bc.atk_mel+bs.atk_mel);">力量值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.atk_rang+as.atk_rang)-(bc.atk_rang+bs.atk_rang);">灵力值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.hp+as.hp)-(bc.hp+bs.hp);">生命值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.def+as.def)-(bc.def+bs.def);">防御值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.hitrate+as.hitrate)-(bc.hitrate+bs.hitrate);">命中值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.avoid+as.avoid)-(bc.avoid+bs.avoid);">回避值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.crit+as.crit)-(bc.crit+bs.crit);">暴击值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.lucky+as.lucky)-(bc.lucky+bs.lucky);">幸运值</option>
+            <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;return (ac.block+as.block)-(bc.block+bs.block);">格挡值</option>
         </select>
         </label>
     </div>
