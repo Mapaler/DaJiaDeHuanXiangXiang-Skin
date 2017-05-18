@@ -64,7 +64,7 @@ var getXML = function(url, isJSON)
 					var strObj = _this.isJSON ? JSON.parse(strs[ki].textContent) : strs[ki].textContent;
 					for(var itm in strObj)
 					{ //把所有文字里的数字转成真正的数字
-						n = typeof(strObj[itm]) == "string"?Number(strObj[itm]):NaN;
+						n = (typeof(strObj[itm]) == "string" && strObj[itm].length>0)?Number(strObj[itm]):NaN;
 						if (!isNaN(n))
 						{
 							strObj[itm] = n;
@@ -141,8 +141,6 @@ function start()
 	var sortType = document.querySelector("#sort-type");
 	sortType.onchange = function()
 	{
-		console.log(this.value);
-		//skinSort(function(a,b){return (a.skin.use_faith+a.skin.use_food)-(b.skin.use_faith+b.skin.use_food)});
 		skinSort(eval(
 			"(function(a,b){"+this.value+"})"
 			));
@@ -162,7 +160,6 @@ function skinSort(cpFn)
 {
 	if (typeof(cpFn) == "undefined") cpFn = function(){return 0;}
 	var ul = document.querySelector("#banner-list");
-	console.log(cpFn);
 	var sortArr = skinBannerArr.sort(cpFn);
 	sortArr.forEach(function(item){
 		ul.appendChild(item);
