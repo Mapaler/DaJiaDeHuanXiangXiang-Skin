@@ -24,6 +24,8 @@
         <label>皮肤排序方式
         <select id="sort-type">
             <option value="return a.index-b.index;">皮肤编号</option>
+            <option value="return a.skin.author.localeCompare(b.skin.author);">皮肤作者名称</option>
+            <option value="return a.card.racename.localeCompare(b.card.racename);">角色种族</option>
             <option value="var as=a.skin,bs=b.skin;return (as.use_faith+as.use_food)-(bs.use_faith+bs.use_food);">出击总消耗量</option>
             <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.hp+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">8项属性合计</option>
             <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.hp/5+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">8项属性，其中血÷5合计</option>
