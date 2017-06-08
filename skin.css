@@ -58,7 +58,7 @@ ul
 {
 	position: absolute;
 	bottom: 0;
-	background-image: url("imgdata/head.png");
+	/*background-image: url("imgdata/head.png");*/
 }
 .head .headcover
 {

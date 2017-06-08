@@ -3,7 +3,8 @@ window.onload = function()
 {
 	start();
 }
-var cardXML,skinXML,questsXML,spellXML,qheadXML;
+var cardXML,skinXML,questsXML,spellXML,qheadXML = new Array();
+var qheadFile = ["head0","head1"]; //储存有哪几个Q版头像名字。
 var skinBannerArr = []; //储存生成的banner 的 li数组
 var maxConsume = 0;
 //访GM_xmlhttpRequest函数v1.3
@@ -45,6 +46,7 @@ var getXML = function(url, isJSON)
 	_this.keyArray = new Array();
 	_this.jsonArray = new Array();
 	_this.xml = null;
+	_this.filename = "";
 	_this.getData = function(callback){
 		GM_xmlhttpRequest({
 			method:'get',
@@ -57,7 +59,6 @@ var getXML = function(url, isJSON)
 				var keys = dict.getElementsByTagName("key");
 				var strs = dict.getElementsByTagName("string");
 
-				var objList = new Object();//以对象形式储存XML中的数据
 				for (var ki=0,kil=keys.length;ki<kil;ki++)
 				{
 					var keyStr = keys[ki].textContent;
@@ -72,14 +73,14 @@ var getXML = function(url, isJSON)
 					}
 					_this.keyArray.push(keyStr);
 					_this.jsonArray.push(strObj);
-					objList[keyStr] = strObj;
+					_this.json[keyStr] = strObj;
 				}
-				_this.json = objList;
 				callback(_this);
 			}
 		})
 	}
-	_this.getImgdata = function(callback){
+	_this.getImgdata = function(callback,filename){
+		if (filename != undefined) _this.filename = filename;
 		function getDictKeyValue(pnode,name)
 		{ /*通过Key获取值*/
 			var valueNode;
@@ -112,7 +113,6 @@ var getXML = function(url, isJSON)
 					var keys = [].slice.call(rdict.children).filter(function(item){return item.nodeName == "key"});
 					var dicts = [].slice.call(rdict.children).filter(function(item){return item.nodeName == "dict"});
 
-					var objList = new Object();//以对象形式储存XML中的数据
 					for (var ki=0,kil=keys.length;ki<kil;ki++)
 					{
 						var keyStr = keys[ki].textContent;
@@ -125,10 +125,10 @@ var getXML = function(url, isJSON)
 							sourceColorRect:tranToArr(getDictKeyValue(vd,"sourceColorRect").textContent),
 							sourceSize:tranToArr(getDictKeyValue(vd,"sourceSize").textContent),
 						};
+						_this.keyArray.push(keyStr);
 						_this.jsonArray.push(strObj);
-						objList[keyStr] = strObj;
+						_this.json[keyStr] = strObj;
 					}
-					_this.json = objList;
 					callback(_this);
 				}
 			}
@@ -193,15 +193,32 @@ function dealQuestsList(xmlObj)
 function dealSpellList(xmlObj)
 {
 	//读取Q版头像列表
-	qheadXML = new getXML("imgdata/head.plist");
-	qheadXML.getImgdata(
-		function(re)
+	//回掉循环处理
+	function getQHead(qheadarr,callback)
+	{
+		if (qheadarr.length < 1) //如果已经没有后续，就执行后续函数
+		{
+			callback(qheadXML);
+			return;
+		}
+		var qheadarrN = qheadarr.concat(); //将现在需要处理的Q版头像图片名称数组存到一个新的数组
+		var thisQHead = qheadarrN.shift(); //删除新数组的第一个元素
+		var qhXML = new getXML("imgdata/" + thisQHead + ".plist"); //生成一个新的XML
+		qheadXML.push(qhXML); //添加到头像XML数组
+		qhXML.getImgdata(
+			function(re)
+			{
+				getQHead(qheadarrN,callback)
+			}
+		,thisQHead);
+	}
+	getQHead(qheadFile,function(re)
 		{
 			dealQheadList(re); //处理Q版头像
 		}
-	);
+	)
 }
-//处理符卡
+//处理Q版头像
 function dealQheadList(xmlObj)
 {
 	//读取皮肤列表
@@ -323,10 +340,11 @@ function creatSkinBanner(skin, skinIndex)
 		lnk.title = "前往THBWiki看看我来自哪部东方作品";
 		return lnk;
 	}
-	sid = skin.skinid;	//皮肤ID
-	cid = skin.cardid;	//角色ID
-	card = cardXML.json[cid]; //角色
-	qhead = qheadXML.json['head/' + sid + '.png']; //Q版头像
+	var sid = skin.skinid;	//皮肤ID
+	var cid = skin.cardid;	//角色ID
+	var card = cardXML.json[cid]; //角色
+	var thisQHeadXML = qheadXML.filter(function(item){return item.json['head/' + sid + '.png'] != undefined;})[0]; //寻找有这个皮肤的头像对应的XML
+	var qhead = thisQHeadXML?thisQHeadXML.json['head/' + sid + '.png']:undefined; //Q版头像
 	
 	var banner = creatElmt("li", "banner");
 	banner.index = skinIndex;; //储存对应的皮肤序号
@@ -349,6 +367,7 @@ function creatSkinBanner(skin, skinIndex)
 	head.appendChild(qheadimg);
 	if (qhead != undefined)
 	{
+		qheadimg.style.backgroundImage = 'url("imgdata/' + thisQHeadXML.filename + '.png")'; //图片地址
 		qheadimg.style.backgroundPosition = "-" + qhead.frame[0][0] + "px -" + qhead.frame[0][1] + "px"; //图片位置偏移定位
 		var ro = qhead.rotated; //是否逆时针旋转90°
 		qheadimg.style.width = qhead.frame[1][ro?1:0] + "px"; //图像宽
