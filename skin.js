@@ -347,13 +347,16 @@ function creatSkinBanner(skin, skinIndex)
 
 	var qheadimg = creatElmt("div", "qhead"); //Q版头像
 	head.appendChild(qheadimg);
-	qheadimg.style.backgroundPosition = "-" + qhead.frame[0][0] + "px -" + qhead.frame[0][1] + "px"; //图片位置偏移定位
-	var ro = qhead.rotated; //是否逆时针旋转90°
-	qheadimg.style.width = qhead.frame[1][ro?1:0] + "px"; //图像宽
-	qheadimg.style.height = qhead.frame[1][ro?0:1] + "px"; //图像高
-	if (ro) qheadimg.style.transform = "rotate(-90deg)";
-	qheadimg.style.left = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/-2:10) + "px"; //图像左边距离
-	qheadimg.style.bottom = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/2:0) + "px"; //图像低部距离
+	if (qhead != undefined)
+	{
+		qheadimg.style.backgroundPosition = "-" + qhead.frame[0][0] + "px -" + qhead.frame[0][1] + "px"; //图片位置偏移定位
+		var ro = qhead.rotated; //是否逆时针旋转90°
+		qheadimg.style.width = qhead.frame[1][ro?1:0] + "px"; //图像宽
+		qheadimg.style.height = qhead.frame[1][ro?0:1] + "px"; //图像高
+		if (ro) qheadimg.style.transform = "rotate(-90deg)";
+		qheadimg.style.left = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/-2:10) + "px"; //图像左边距离
+		qheadimg.style.bottom = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/2:0) + "px"; //图像低部距离
+	}
 
 	var headcover = creatElmt("div", "headcover"); //头像上方的覆盖
 	head.appendChild(headcover);
