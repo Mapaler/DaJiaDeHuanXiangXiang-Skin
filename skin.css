@@ -5,7 +5,9 @@ ul
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	font-family: "Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-family: "Microsoft YaHei","Helvetica Neue",Helvetica,Arial,san-serif;
+	font-size: 1em;
+	line-height: 1em;
 }
 .banner
 {
@@ -138,8 +140,12 @@ ul
 }
 .details-dl .content
 {
-	padding: 0;
 	margin-left: 100px;
+	padding-bottom: 10px;
+}
+.details-dl .content:last-child
+{
+	padding-bottom: 0px;
 }
 
 .attribute
