@@ -485,42 +485,48 @@ function creatSkinBanner(skin, skinIndex)
 	}
 
 	//攻击类型
-	aType =	(function(n){
-				switch(n)
-				{
-				case 3001:
-					return "弹幕";
-					break;
-				case 1001:
-					return "斩击(体术)";
-					break;
-				case 1002:
-					return "击打(体术)";
-					break;
-				default:
-					return "未知的";
-				}
-			})(skin.atktype);
+	function getAtkTypeName(type)
+	{
+		var str = "";
+		switch(type)
+		{
+			case 3001:
+				str = "弹幕";
+				break;
+			case 1001:
+				str = "斩击(体术)";
+				break;
+			case 1002:
+				str = "击打(体术)";
+				break;
+			default:
+				str = "未知的";
+		}
+		return str;
+	}
 	//攻击范围
-	aRange =(function(n){
-				switch(n)
-				{
-				case 1:
-					return "近";
-					break;
-				case 2:
-					return "中";
-					break;
-				case 3:case 4:case 5:
-					return "远";
-					break;
-				default:
-					return "未知的";
-				}
-			})(skin.range);
+	function getAtkRangeName(type)
+	{
+		var str = "";
+		switch(type)
+		{
+			case 1:
+				str = "近";
+				break;
+			case 2:
+				str = "中";
+				break;
+			case 3:case 4:case 5:
+				str = "远";
+				break;
+			default:
+				str = "未知的";
+		}
+		return str;
+	}
 	var spells = {
 		"出击消耗": buildConsume(skin.use_faith,skin.use_food),
-		"攻击类型": aType + "，射程 " + aRange + "",
+		"攻击类型": getAtkTypeName(skin.atktype) + "，射程 " + getAtkRangeName(skin.range) + "",
 		"攻击符卡":crtSpellArr(spellXML.json[spellidA]),
 		"防御符卡":crtSpellArr(spellXML.json[spellidB]),
 		"支援符卡":crtSpellArr(spellXML.json[spellidC]),
