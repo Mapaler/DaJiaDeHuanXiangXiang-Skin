@@ -1,6 +1,6 @@
 # 大家的幻想乡-皮肤图鉴
 
-## 在线查看
+## 在线查看（保持最新版本）
 https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/
 
 ## 百度贴吧
@@ -10,6 +10,8 @@ https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/
 大家的幻想乡-皮肤图鉴 Copyright(C) 2017 by 枫谷剑仙
 
 此程序是免费软件。你可以将它根据“GNU通用公共许可证第三版(GPLv3)”重新分发和/或修改。
+
+网页程序代码部分版权属于枫谷剑仙，皮肤图片及皮肤文本版权归属《[大家的幻想乡](http://www.touhou.ren/)》。
 
 ## 离线查看办法
 希望节省流量的话可以将本项目下载下来离线查看。
