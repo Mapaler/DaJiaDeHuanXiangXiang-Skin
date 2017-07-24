@@ -1,11 +1,5 @@
-@charset "utf-8";
-/* CSS Document */
+@namespace url(http://www.w3.org/2000/svg);
 
-/*
-.transBox
-{
-	transform: translate(50%,50%);
-}*/
 .line
 {
 	fill:none;
@@ -13,6 +7,14 @@
 .background
 {
 	fill: url(#grey_blue)  ;
+}
+.stop1 {
+  stop-color:LightSkyBlue;
+  stop-opacity:1;
+}
+.stop2 {
+  stop-color:AliceBlue;
+  stop-opacity:1;
 }
 .attribute
 {

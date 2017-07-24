@@ -1,6 +1,8 @@
 // JavaScript Document
+var binfo; //用于显示进度信息
 window.onload = function()
 {
+	binfo = document.querySelector("#basic-info");
 	start();
 }
 var cardXML,skinXML,questsXML,spellXML,qheadXML = new Array();
@@ -138,6 +140,7 @@ var getXML = function(url, isJSON)
 
 function start()
 {
+	//给排序下拉框添加功能
 	var sortType = document.querySelector("#sort-type");
 	sortType.onchange = function()
 	{
@@ -145,9 +148,9 @@ function start()
 			"(function(a,b){"+this.value+"})"
 			));
 	};
-	//skinSort(cpFn)
 
 	//读取人物列表
+	binfo.innerHTML = "正在读取人物列表...";
 	cardXML = new getXML("data/card.plist");
 	cardXML.getData(
 		function(re)
@@ -169,6 +172,7 @@ function skinSort(cpFn)
 function dealCardList(xmlObj)
 {
 	//读取委托列表
+	binfo.innerHTML = "正在读取委托列表...";
 	questsXML = new getXML("data/quests.plist");
 	questsXML.getData(
 		function(re)
@@ -181,6 +185,7 @@ function dealCardList(xmlObj)
 function dealQuestsList(xmlObj)
 {
 	//读取符卡列表
+	binfo.innerHTML = "正在读取符卡列表...";
 	spellXML = new getXML("data/spell.plist");
 	spellXML.getData(
 		function(re)
@@ -201,6 +206,8 @@ function dealSpellList(xmlObj)
 			callback(qheadXML);
 			return;
 		}
+		
+		binfo.innerHTML = "正在读取Q版头像列表" + qheadXML.length+1 + "...";
 		var qheadarrN = qheadarr.concat(); //将现在需要处理的Q版头像图片名称数组存到一个新的数组
 		var thisQHead = qheadarrN.shift(); //删除新数组的第一个元素
 		var qhXML = new getXML("imgdata/" + thisQHead + ".plist"); //生成一个新的XML
@@ -222,6 +229,7 @@ function dealSpellList(xmlObj)
 function dealQheadList(xmlObj)
 {
 	//读取皮肤列表
+	binfo.innerHTML = "正在读取皮肤列表...";
 	skinXML = new getXML("data/skin.plist");
 	skinXML.getData(
 		function(re)
@@ -235,7 +243,6 @@ function dealSkinJSON(xmlObj)
 {
 	var skinList = xmlObj.jsonArray;
 	
-	var binfo = document.querySelector("#basic-info");
 	var skinCount=skinList.length; //皮肤个数
 	binfo.innerHTML = "总共有" + skinCount + "个皮肤";
 	//console.log("总共有" + skinCount + "个皮肤");
@@ -309,14 +316,6 @@ function creatSkinBanner(skin, skinIndex)
 			}
 		}
 		return dl;
-	}
-	//创建SVG多边图
-	function creatPolygonSVG(valueArr)
-	{
-		var svg = document.createElement("embed");
-		svg.type="image/svg+xml";
-		svg.src = "skin-polygon.svg?attr=" + encodeURIComponent(JSON.stringify(valueArr));
-		return svg;
 	}
 	//创建消耗条
 	function buildConsume(faith, food)
@@ -557,3 +556,148 @@ function creatSkinBanner(skin, skinIndex)
 
 }
 
+//创建SVG多边图
+function creatPolygonSVG(attrArr)
+{
+	var SVG_NS = "http://www.w3.org/2000/svg";
+	var w=550,h=500,x=w/2,y=h/2,radius = 170;
+	var fontSize = 25;
+
+	var dt = document.implementation.createDocumentType('svg:svg', '-//W3C//DTD SVG 1.1//EN', 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd');
+	var doc = document.implementation.createDocument(SVG_NS, 'svg:svg', dt);
+	var de = doc.documentElement;
+	de.setAttribute("xmlns",SVG_NS);
+	de.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink");
+	de.setAttribute("version","1.2");
+	de.setAttribute("viewBox","0 0 550 500");
+	var defs = document.createElementNS(SVG_NS, 'defs');
+	de.appendChild(defs);
+	var radialGradient = document.createElementNS(SVG_NS, 'radialGradient');
+	radialGradient.id = "grey_blue";
+	var stop1 = document.createElementNS(SVG_NS, 'stop');
+	stop1.setAttribute("offset","50%");
+	stop1.setAttribute("class","stop1");
+	var stop2 = document.createElementNS(SVG_NS, 'stop');
+	stop2.setAttribute("offset","100%");
+	stop2.setAttribute("class","stop2");
+	radialGradient.appendChild(stop1);
+	radialGradient.appendChild(stop2);
+	defs.appendChild(radialGradient);
+	var transBox = document.createElementNS(SVG_NS, 'g');
+	transBox.setAttribute("class","transBox");
+	de.appendChild(transBox);
+	drawPolygon(attrArr);
+
+	//具体画图的函数
+	function drawPolygon(arr)
+	{
+		var len = arr.length;
+		var radStep = 2 * Math.PI / len; //弧度步长
+		//画六角边框
+		var boxPointArr = new Array(); //储存外边框
+		var namePointArr = new Array(); //储存名字的位置
+		var attrPointArr = new Array(); //储存初始属性多边形
+		var attrAddPointArr = new Array(); //储存属性值-增加值多边形
+		var valuePointArr = new Array(); //储存属性值文字的位置
+		for (var si=0;si<len;si++) //获取各点值
+		{
+			var radian = radStep * si - Math.PI/2; //当前弧度
+			boxPointArr.push([
+				radius * Math.cos(radian) + x,
+				radius * Math.sin(radian) + y,
+			]);
+			var nameRadius = radius + fontSize * 2;//当前名字的半径，一般只有两个字
+			namePointArr.push([
+				nameRadius *1.1 * Math.cos(radian) + x,
+				nameRadius * Math.sin(radian) + y,
+			]);
+			var attr = arr[si]; //当前属性
+			var attrRadius = radius * (attr.value / attr.max);//初始属性的半径
+			attrPointArr.push([
+				attrRadius * Math.cos(radian) + x,
+				attrRadius * Math.sin(radian) + y,
+			]);
+			var attrAddRadius = radius * ((attr.value + attr.valueAdd) / attr.max);//属性值-增加值的半径
+			attrAddPointArr.push([
+				attrAddRadius * Math.cos(radian) + x,
+				attrAddRadius * Math.sin(radian) + y,
+			]);
+			var valueRadius = attrAddRadius + fontSize;//当前属性值文字的半径
+			valuePointArr.push([
+				valueRadius * Math.cos(radian) + x,
+				valueRadius * Math.sin(radian) + y,
+			]);
+		}
+		//底多边形的points属性用字符串
+		var boxPointsStr = boxPointArr.map(function(item){
+						return item.join(" ");
+					}).join(" ");
+		//初始属性多边形的points属性用字符串
+		var attrPointsStr = attrPointArr.map(function(item){
+						return item.join(" ");
+					}).join(" ");
+		//属性-增加值多边形的points属性用字符串
+		var attrAddPointsStr = attrAddPointArr.map(function(item){
+						return item.join(" ");
+					}).join(" ");
+		//添加底多边形
+		var bPolygon = document.createElementNS(SVG_NS,"polygon");
+		bPolygon.setAttribute("class","background");
+		bPolygon.setAttribute("points",boxPointsStr);
+		transBox.appendChild(bPolygon);
+		//添加辐线
+		var lineGroup = document.createElementNS(SVG_NS,"g");
+		lineGroup.setAttribute("class","lineGroup");
+		for (var si=0;si<len;si++)
+		{
+			var ox =x,oy=y,toP=boxPointArr[si];
+			var line = document.createElementNS(SVG_NS,"line");
+			line.setAttribute("class","line");
+			line.setAttribute("x1",ox);
+			line.setAttribute("y1",oy);
+			line.setAttribute("x2",toP[0]);
+			line.setAttribute("y2",toP[1]);
+			lineGroup.appendChild(line);
+		}
+		transBox.appendChild(lineGroup);
+		if (arr.filter(function(item){return item.valueAdd != 0}).length > 0) //如果皮肤的属性有改变
+		{
+			//添加初始属性多边形
+			var aPolygon = document.createElementNS(SVG_NS,"polygon");
+			aPolygon.setAttribute("class","attribute");
+			aPolygon.setAttribute("points",attrPointsStr);
+			transBox.appendChild(aPolygon);
+		}
+		//添加属性-增加值多边形
+		var aPolygon = document.createElementNS(SVG_NS,"polygon");
+		aPolygon.setAttribute("class","attribute-add");
+		aPolygon.setAttribute("points",attrAddPointsStr);
+		transBox.appendChild(aPolygon);
+		//添加名称、值
+		//添加名称
+		var nameGroup = document.createElementNS(SVG_NS,"g");
+		nameGroup.setAttribute("class","nameGroup");
+		var valueGroup = document.createElementNS(SVG_NS,"g");
+		valueGroup.setAttribute("class","valueGroup");
+		for (var si=0;si<len;si++)
+		{
+			var attr = arr[si]; //当前属性值
+			var bP=namePointArr[si],aP=valuePointArr[si];
+			var ntext = document.createElementNS(SVG_NS,"text");
+			ntext.setAttribute("class","text text-name");
+			ntext.setAttribute("x",bP[0] - fontSize);
+			ntext.setAttribute("y",bP[1] + fontSize/2);
+			ntext.textContent = attr.name;
+			nameGroup.appendChild(ntext);
+			var atext = document.createElementNS(SVG_NS,"text");
+			atext.setAttribute("class","text text-value");
+			atext.setAttribute("x",aP[0] - fontSize/2);
+			atext.setAttribute("y",aP[1] + fontSize/2);
+			atext.textContent = (attr.value + attr.valueAdd);
+			valueGroup.appendChild(atext);
+		}
+		transBox.appendChild(nameGroup);
+		transBox.appendChild(valueGroup);
+	}
+	return de;
+}
