@@ -2,6 +2,7 @@
 
 ## 在线查看（保持最新版本）
 https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/
+http://mapaler.oschina.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图片速度会快些)
 
 ## 百度贴吧
 [大家的幻想乡吧](http://tieba.baidu.com/f?kw=%E5%A4%A7%E5%AE%B6%E7%9A%84%E5%B9%BB%E6%83%B3%E4%B9%A1)
