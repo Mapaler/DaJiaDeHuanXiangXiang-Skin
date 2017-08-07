@@ -1,7 +1,7 @@
 # 大家的幻想乡-皮肤图鉴
 
 ## 在线查看（保持最新版本）
-https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/
+https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/  
 http://mapaler.oschina.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图片速度会快些)
 
 ## 百度贴吧
