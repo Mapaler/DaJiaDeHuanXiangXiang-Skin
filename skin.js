@@ -207,7 +207,7 @@ function dealSpellList(xmlObj)
 			return;
 		}
 		
-		binfo.innerHTML = "正在读取Q版头像列表" + qheadXML.length+1 + "...";
+		binfo.innerHTML = "正在读取Q版头像列表" + (qheadXML.length+1) + "...";
 		var qheadarrN = qheadarr.concat(); //将现在需要处理的Q版头像图片名称数组存到一个新的数组
 		var thisQHead = qheadarrN.shift(); //删除新数组的第一个元素
 		var qhXML = new getXML("imgdata/" + thisQHead + ".plist"); //生成一个新的XML
