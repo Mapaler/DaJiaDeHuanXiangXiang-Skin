@@ -1,5 +1,17 @@
 ﻿@namespace url(http://www.w3.org/1999/xhtml);
-
+/*弹跳动画*/
+@keyframes spring
+{
+	from {transform:scaleY(0.95) skewX(-1deg);}
+	50% {transform:scaleY(1) skewX(0);}
+	to {transform:scaleY(0.95) skewX(1deg);}
+}
+@keyframes spring_rotate
+{
+	from {transform:rotate(-90deg) scaleX(0.95) skewY(-1deg);}
+	50% {transform:rotate(-90deg) scaleX(1) skewY(0);}
+	to {transform:rotate(-90deg) scaleX(0.95) skewY(1deg);}
+}
 #banner-list
 {
 	margin: 0;
@@ -56,11 +68,17 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.head .qhead
+.head .qhead,.head .qhead_rotate
 {
 	position: absolute;
 	bottom: 0;
-	/*background-image: url("imgdata/head.png");*/
+    transform-origin: center bottom;
+    animation: spring 0.4s ease-in-out infinite alternate;
+}
+.head .qhead_rotate
+{
+    transform-origin: left center;
+    animation: spring_rotate 0.4s ease-in-out infinite alternate;
 }
 .head .headcover
 {

@@ -278,10 +278,10 @@ function dealSkinJSON(xmlObj)
 function creatSkinBanner(skin, skinIndex)
 {
 	//化简创建元素
-	function creatElmt(tag, classnName, inner)
+	function creatElmt(tag, className, inner)
 	{
 		var dom = document.createElement(tag);
-		dom.className = classnName;
+		dom.className = className;
 		if (typeof(inner) != "undefined")
 		{
 			if(inner instanceof HTMLElement) //如果传入的是HTML元素
@@ -345,6 +345,23 @@ function creatSkinBanner(skin, skinIndex)
 	var thisQHeadXML = qheadXML.filter(function(item){return item.json['head/' + sid + '.png'] != undefined;})[0]; //寻找有这个皮肤的头像对应的XML
 	var qhead = thisQHeadXML?thisQHeadXML.json['head/' + sid + '.png']:undefined; //Q版头像
 	
+	var attrInfoArr = [
+		{name:"生命",value: card.hp , valueAdd: skin.hp , max:500},
+		{name:"灵力",value: card.atk_rang , valueAdd: skin.atk_rang , max:100},
+		{name:"命中",value: card.hitrate , valueAdd: skin.hitrate , max:100},
+		{name:"回避",value: card.avoid , valueAdd: skin.avoid , max:100},
+		{name:"防御",value: card.def , valueAdd: skin.def , max:100},
+		//{name:"格挡",value: card.block , valueAdd: skin.block , max:100},
+		{name:"幸运",value: card.lucky , valueAdd: skin.lucky , max:100},
+		{name:"暴击",value: card.crit , valueAdd: skin.crit , max:100},
+		{name:"力量",value: card.atk_mel , valueAdd: skin.atk_mel , max:100},
+	];
+	//属性合计值
+	var tolAttr = attrInfoArr.reduce(function(previous, item){return previous + item.value + item.valueAdd;},0);
+	var hp_v =  card.hp + skin.hp;
+	var no_hp = tolAttr - hp_v;
+	var hp_c_5 = no_hp + hp_v/5;
+
 	var banner = creatElmt("li", "banner");
 	banner.index = skinIndex;; //储存对应的皮肤序号
 	banner.skin = skin; //储存对应的皮肤对象
@@ -371,9 +388,11 @@ function creatSkinBanner(skin, skinIndex)
 		var ro = qhead.rotated; //是否逆时针旋转90°
 		qheadimg.style.width = qhead.frame[1][ro?1:0] + "px"; //图像宽
 		qheadimg.style.height = qhead.frame[1][ro?0:1] + "px"; //图像高
-		if (ro) qheadimg.style.transform = "rotate(-90deg)";
-		qheadimg.style.left = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/-2:10) + "px"; //图像左边距离
-		qheadimg.style.bottom = (ro?(qhead.frame[1][1]-qhead.frame[1][0])/2:0) + "px"; //图像低部距离
+		if (ro) qheadimg.className="qhead_rotate";
+		qheadimg.style.left = (ro?(qhead.frame[1][0]/2+10):10) + "px"; //图像左边距离
+		qheadimg.style.bottom = (ro?qhead.frame[1][0]/-2:0) + "px"; //图像低部距离
+		//Q版头像弹跳速度根据消耗依次上升
+		qheadimg.style.animationDuration = (skin.use_faith+skin.use_food) / 15 + "s";
 	}
 
 	var headcover = creatElmt("div", "headcover"); //头像上方的覆盖
@@ -432,24 +451,14 @@ function creatSkinBanner(skin, skinIndex)
 	//创建属性八边图
 	var attribute = creatElmt("div", "attribute");
 	banner.appendChild(attribute);
-	var attrInfoArr = [
-		{name:"生命",value: card.hp , valueAdd: skin.hp , max:500},
-		{name:"灵力",value: card.atk_rang , valueAdd: skin.atk_rang , max:100},
-		{name:"命中",value: card.hitrate , valueAdd: skin.hitrate , max:100},
-		{name:"回避",value: card.avoid , valueAdd: skin.avoid , max:100},
-		{name:"防御",value: card.def , valueAdd: skin.def , max:100},
-		//{name:"格挡",value: card.block , valueAdd: skin.block , max:100},
-		{name:"幸运",value: card.lucky , valueAdd: skin.lucky , max:100},
-		{name:"暴击",value: card.crit , valueAdd: skin.crit , max:100},
-		{name:"力量",value: card.atk_mel , valueAdd: skin.atk_mel , max:100},
-	];
+	//属性值移到了上面去
 	var attrSVG = creatPolygonSVG(attrInfoArr);
 	attribute.appendChild(attrSVG);
 	//创建属性值合计
 	var attrCount = creatElmt("div", "attr-count", [
-		attrInfoArr.length + "项合计" + attrInfoArr.reduce(function(previous, item){return previous + item.value + item.valueAdd;},0),
-		"血÷5合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value + item.valueAdd;else return previous + (item.value + item.valueAdd)/5;},0),
-		"<br>去血合计" + attrInfoArr.reduce(function(previous, item){ if(item.name != "生命")return previous + item.value + item.valueAdd;else return previous;},0),
+		attrInfoArr.length + "项合计" + tolAttr,
+		"血÷5合计" + hp_c_5,
+		"<br>去血合计" + no_hp,
 		"格挡值 ",
 		].join("，")
 	);
