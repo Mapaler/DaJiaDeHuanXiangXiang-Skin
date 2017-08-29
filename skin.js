@@ -356,7 +356,7 @@ function creatSkinBanner(skin, skinIndex)
 		{name:"暴击",value: card.crit , valueAdd: skin.crit , max:100},
 		{name:"力量",value: card.atk_mel , valueAdd: skin.atk_mel , max:100},
 	];
-	//属性合计值
+	//8属性合计值
 	var tolAttr = attrInfoArr.reduce(function(previous, item){return previous + item.value + item.valueAdd;},0);
 	var hp_v =  card.hp + skin.hp;
 	var no_hp = tolAttr - hp_v;
@@ -448,6 +448,10 @@ function creatSkinBanner(skin, skinIndex)
 	detail.appendChild(detailDL);
 	//detail.innerHTML = card.cardname;
 
+
+	//8属性合计值
+	var tolBP = attrInfoArr.reduce(function(previous, item){return previous + countBasicPoint(item.name=="生命"?(item.value + item.valueAdd)/5:item.value+item.valueAdd);},0);
+	banner.skin.basicpoint = tolBP;
 	//创建属性八边图
 	var attribute = creatElmt("div", "attribute");
 	banner.appendChild(attribute);
@@ -458,7 +462,8 @@ function creatSkinBanner(skin, skinIndex)
 	var attrCount = creatElmt("div", "attr-count", [
 		attrInfoArr.length + "项合计" + tolAttr,
 		"血÷5合计" + hp_c_5,
-		"<br>去血合计" + no_hp,
+		"等同基础点" + tolBP,
+		"<br>去血" + (attrInfoArr.length-1) + "项合计" + no_hp,
 		"格挡值 ",
 		].join("，")
 	);
@@ -466,7 +471,6 @@ function creatSkinBanner(skin, skinIndex)
 	var bV = (card.block + skin.block); //blockValue
 	var blockSpan = creatElmt("span", bV>20?"block-high":(bV<20?"block-low":"block-normal"), bV);
 	attrCount.appendChild(blockSpan);
-	
 	attribute.appendChild(attrCount);
 
 	//创建符卡
@@ -709,4 +713,12 @@ function creatPolygonSVG(attrArr)
 		transBox.appendChild(valueGroup);
 	}
 	return de;
+}
+//计算属性值需要的点数
+function countBasicPoint(value)
+{
+	var decade = parseInt(value / 10); //10位的最大数
+	var remainder = value % 10; //余数
+	var bp = (1+decade)*decade/2*10 + (decade+1)*remainder;
+	return bp;
 }
