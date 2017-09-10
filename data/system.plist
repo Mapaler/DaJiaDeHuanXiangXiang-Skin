@@ -20,6 +20,7 @@
 
 	<key>login_version</key><string>版本号过低，请下载最新客户端。</string> 
 	<key>login_state</key><string>出入证已作废，禁止进入博丽大结界。</string> 
+	<key>login_state2</key><string>天内禁止进入博丽大结界。</string> 
 	<key>login_error</key><string>账号或密码不正确。</string> 
 	<key>login_u_error</key><string>账号不存在，请注意大小写。</string> 
 	<key>login_p_error</key><string>密码错误，请注意大小写。</string> 

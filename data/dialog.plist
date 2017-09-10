@@ -5825,6 +5825,67 @@
 {"talker":"L","lchar":"ATH001701","lcharn": "露娜萨·普莉兹姆利巴","rchar": "","rcharn": "","message":"“虽然来路不明，但是好好听啊~”","bgid": "home_home"},
 {"talker":"L","lchar":"ATH001701","lcharn": "露娜萨·普莉兹姆利巴","rchar": "","rcharn": "","message":"“而且，有种怀念的感觉呐……”","bgid": "home_home"}
 ]} </string>
+<!-- 博丽神社接受任务后* -->
+<key>5000050_0</key> 
+<string>{"id": "1001","dialogList": [
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"啊啊，好麻烦啊，这样忙下去什么时候才能到头啊。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"正午的太阳毫不留情，一扫早晨与夜晚的凉爽，灵梦正忙碌地收捡着一些物品，随后指挥着一些小妖精搬运物品，空暇时用袖口擦拭着额头的汗，却依旧无济于事。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"灵梦小姐，请问需要我帮忙吗？","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"你来的正好呢，帮收集一些太阳花带给阿求吧，要快一点，来不及了！","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"灵梦急忙离开，其速度之快竟带起了周围未扫净的落叶，连灵梦头上的蝴蝶结也从空中飘落下来，孤零零地落在地上。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"灵梦…小姐…！没办法，只能先去收集太阳花了…不过太阳花田的那位领主可不是吃素的啊…要好好加油了！","bgid": "home_home"}
+]} </string>
+<key>5000051_0</key> 
+<string>{"id": "1001","dialogList": [
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"再度回神社时，已是傍晚了，能听见神社里的夜虫的鸣叫，意外的安静呢…","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"灵梦小姐不在吗？任务算是完成了吗？不…恐怕还没有…灵梦小姐忙活了那么多天，现在居然还不在，再找找有没有她留下的信息吧。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"我在神社附近搜寻了一会，最终被赛钱箱上一张不起眼的小字条所吸引。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"字迹很潦草，大概是灵梦小姐走的比较匆忙吧。我费了些力气读懂了意思。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"去收集30个西行妖的花瓣，送给小铃…哇，灵梦小姐，你这…唉，总觉得接下来被拜托的事要没完没了了。","bgid": "home_home"}
+]} </string>
+<key>5000052_0</key> 
+<string>{"id": "1001","dialogList": [
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"清晨的第一缕阳光沐浴在我身上，我却倍感劳累。没错，昨晚我去幽冥结界“修仙”了。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"神社内部传来一阵阵香味，难道是灵梦小姐良心发觉，为我准备了饭菜吗？我欣喜地跑进神社。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"灵梦小姐！你厨艺真的超好的啊，我在外面老远就闻到了你做的饭菜的香味。","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"什么？这些食物不是为你准备的，你来的正好，一起做一些食材吧。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"啊？可是…我已经快饿死了…","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"那就给你个红薯填填肚子吧，吃完了记得来做哦，快赶不上时间了…","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"好的好的。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"神社里灵梦依旧忙碌地准备食物，鲜少看见灵梦这么认真地准备食物呢。咦？还没戴上蝴蝶结？说起来神社外也没看见了…","bgid": "home_home"}
+]} </string>
+<key>5000053_0</key> 
+<string>{"id": "1001","dialogList": [
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"谢谢你的帮忙了，人间之里那边也在准备了，不过据说农田附近的妖精在捣乱。真是不懂事的妖精呢，现在我任务快完成了，一起去退治她们吧。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"又是三月精？总觉得…算了…还是先去看看情况吧","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"灵梦的面庞恢复了以往的生机，这令我十分高兴，不过她还是在披头散发，事情结束之后送她一个蝴蝶结吧。","bgid": "home_home"}
+]} </string>
+<key>5000054_0</key> 
+<string>{"id": "1001","dialogList": [
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"妖精们原来在帮忙吗…错怪她们了…","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"我已经给她们道歉了…我下手还是有点重…","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"这样也可以了吧…话说祭典事准备妥当了吗？","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"嗯，全部准备完毕了，接下来开始宴会吧！","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"灵梦终于露出了笑容，一扫之前的阴霾与劳累，似乎想先打理乱糟糟的神社。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"灵梦小姐，请等等！","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"嗯？还有什么事吗？","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"这是你的蝴蝶结，这几天你一直没戴上。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"灵梦在原地呆愣了一会，不过很快回过神，迅速转过身。","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"诶？这是…","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"咳咳，真是谢谢你了，居然还记得这个…","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"你忙去吧？或者要我现在帮你戴吗？","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"不用不用，你去准备宴会吧。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"说完灵梦迅速跑进了神社，蝴蝶结又留在外面了。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"还要再给一遍呢…灵梦小姐没事吧…","bgid": "home_home"}
+]} </string>
+<key>5000055_0</key> 
+<string>{"id": "1001","dialogList": [
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"万事俱备，只欠宴会~","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"这段时间你辛苦了，作为回报，我们一起去人间之里的祭典放松吧。","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "P","rchar": "","rcharn": "","message":"嗯嗯，灵梦小姐也辛苦了呢。","bgid": "home_home"},
+{"talker":"L","lchar":"ATH000101","lcharn": "博丽灵梦","rchar": "","rcharn": "","message":"那么开始宴会吧~","bgid": "home_home"},
+{"talker":"L","lchar":"","lcharn": "","rchar": "","rcharn": "","message":"神社的夜晚依旧那么宁静，夜虫也开始多了起来，共奏着秋夜的交响乐。","bgid": "home_home"}
+]} </string>
 
 </dict> 
 </plist>
