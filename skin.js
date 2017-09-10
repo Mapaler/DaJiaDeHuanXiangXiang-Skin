@@ -582,7 +582,7 @@ function creatPolygonSVG(attrArr)
 	de.setAttribute("xmlns",SVG_NS);
 	de.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink");
 	de.setAttribute("version","1.2");
-	de.setAttribute("viewBox","0 0 550 500");
+	de.setAttribute("viewBox","0 0 550 550");
 	var defs = document.createElementNS(SVG_NS, 'defs');
 	de.appendChild(defs);
 	var radialGradient = document.createElementNS(SVG_NS, 'radialGradient');
