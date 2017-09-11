@@ -20,7 +20,6 @@
         <li>本地包里找不到皮肤普通宴出规则，所以没有普通宴出信息，有些普通皮肤也有限定信息，为何本地有这些信息原因不明。附：我收集的<a href="banquet-skin.html" target="_blank">皮肤获取方式</a></li>
         <li>实际的战斗判定和是否被宴请到是游戏服务器决定，与本地游戏包无关。所以这些信息仅作参考，不一定完全正确。</li>
         <li>有不认识的人物时，点击图鉴的角色名可以看人物介绍</li>
-        <li>2017年8月29日 增加8项属性等同基础点与排序。</li>
     </ul>
     <div id="skin-sort">
         <label>皮肤排序方式
@@ -31,7 +30,7 @@
             <option value="var as=a.skin,bs=b.skin;return (as.use_faith+as.use_food)-(bs.use_faith+bs.use_food);">出击总消耗量</option>
             <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.hp+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">8项属性合计</option>
             <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.hp/5+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">8项属性，其中血÷5合计</option>
-            <option value="var as=a.skin,bs=b.skin;return as.basicpoint-bs.basicpoint;">8项属性基础点合计(NEW)</option>
+            <option value="var as=a.skin,bs=b.skin;return as.basicpoint-bs.basicpoint;">8项属性基础点合计</option>
             <option value="var as=a.skin,ac=a.card,bs=b.skin,bc=b.card;function tt(c){return c.atk_mel+c.atk_rang+c.def+c.hitrate+c.avoid+c.crit+c.lucky;} return (tt(ac)+tt(as))-(tt(bc)+tt(bs));">去血7项属性合计</option>
             <option value="var as=a.skin,bs=b.skin;return (as.use_faith==bs.use_faith)?(as.use_food-bs.use_food):(as.use_faith-bs.use_faith);">信仰消耗量</option>
             <option value="var as=a.skin,bs=b.skin;return (as.use_food==bs.use_food)?(as.use_faith-bs.use_faith):(as.use_food-bs.use_food);">饭团消耗量</option>

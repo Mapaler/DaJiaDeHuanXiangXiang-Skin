@@ -41,5 +41,15 @@
 }
 .text-value{
 	fill: FireBrick;
-	text-shadow: Salmon 0 0 2px;
+	text-shadow: yellow 0 0 2px,yellow 0 0 2px,yellow 0 0 2px;
+	font-weight: bold;
+}
+.text-value .diff{
+	font-size:15px;
+}
+.diff-add{
+	fill: red;
+}
+.diff-reduce{
+	fill: blue;
 }

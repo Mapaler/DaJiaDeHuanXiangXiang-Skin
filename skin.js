@@ -582,7 +582,7 @@ function creatPolygonSVG(attrArr)
 	de.setAttribute("xmlns",SVG_NS);
 	de.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink");
 	de.setAttribute("version","1.2");
-	de.setAttribute("viewBox","0 0 550 550");
+	de.setAttribute("viewBox","0 0 650 550");
 	var defs = document.createElementNS(SVG_NS, 'defs');
 	de.appendChild(defs);
 	var radialGradient = document.createElementNS(SVG_NS, 'radialGradient');
@@ -707,6 +707,18 @@ function creatPolygonSVG(attrArr)
 			atext.setAttribute("x",aP[0] - fontSize/2);
 			atext.setAttribute("y",aP[1] + fontSize/2);
 			atext.textContent = (attr.value + attr.valueAdd);
+			if (attr.valueAdd!=0)
+			{
+				var atext_c = document.createElementNS(SVG_NS,"tspan");
+				atext_c.setAttribute("class","diff " + (attr.valueAdd>0?"diff-add":"diff-reduce"));
+				atext_c.textContent = [
+					"(",
+					(attr.valueAdd>0?"+":""),
+					attr.valueAdd,
+					")"
+				].join("");
+				atext.appendChild(atext_c);
+			}
 			valueGroup.appendChild(atext);
 		}
 		transBox.appendChild(nameGroup);
