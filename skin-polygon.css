@@ -8,6 +8,10 @@
 {
 	fill: url(#grey_blue)  ;
 }
+.outbackground
+{
+	fill: rgb(255, 233, 244);
+}
 .stop1 {
   stop-color:LightSkyBlue;
   stop-opacity:1;
@@ -26,7 +30,7 @@
 	fill:rgba(0,207,44, 0.8);
 	stroke:OliveDrab;
 }
-.line,.background
+.line,.background,.outbackground
 {
 	stroke:brown;
 }
@@ -41,11 +45,11 @@
 }
 .text-value{
 	fill: FireBrick;
-	text-shadow: yellow 0 0 2px,yellow 0 0 2px,yellow 0 0 2px;
+	text-shadow: yellow 0 0 1px;
 	font-weight: bold;
 }
 .text-value .diff{
-	font-size:15px;
+	font-size:18px;
 }
 .diff-add{
 	fill: red;
