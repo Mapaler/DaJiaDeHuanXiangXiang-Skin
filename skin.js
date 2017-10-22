@@ -573,7 +573,7 @@ function creatSkinBanner(skin, skinIndex)
 function creatPolygonSVG(attrArr)
 {
 	var SVG_NS = "http://www.w3.org/2000/svg";
-	var w=500,h=500,x=w/2,y=h/2,radius = 170;
+	var w=550,h=500,x=w/2,y=h/2,radius = 170;
 	var fontSize = 25;
 
 	var dt = document.implementation.createDocumentType('svg:svg', '-//W3C//DTD SVG 1.1//EN', 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd');
@@ -582,7 +582,7 @@ function creatPolygonSVG(attrArr)
 	de.setAttribute("xmlns",SVG_NS);
 	de.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink");
 	de.setAttribute("version","1.2");
-	de.setAttribute("viewBox","-25 0 550 500");
+	de.setAttribute("viewBox","0 0 550 500");
 	var defs = document.createElementNS(SVG_NS, 'defs');
 	de.appendChild(defs);
 	var radialGradient = document.createElementNS(SVG_NS, 'radialGradient');
