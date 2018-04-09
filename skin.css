@@ -49,6 +49,7 @@
     border: 2px solid #7D77FF;
     border-radius: 15px;
     box-shadow: black 0 0 5px;
+    overflow: hidden;
 }
 
 .head,
@@ -62,7 +63,6 @@
 .head {
     width: 15%;
     min-width: 200px;
-    max-width: 350px;
     height: 100%;
     border-radius: 15px 0 0 15px;
     box-shadow: black 0 0 5px;
@@ -71,6 +71,14 @@
     background-size: 40px 40px;
     overflow: hidden;
     position: relative;
+    transition: width 1s, border-radius 1s;
+    cursor: pointer;
+}
+
+.widehead {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 15px;
 }
 
 .head .picture,

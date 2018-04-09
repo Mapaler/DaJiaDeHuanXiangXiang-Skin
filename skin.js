@@ -334,14 +334,13 @@ function creatSkinBanner(skin, skinIndex) {
     banner.skin = skin; //储存对应的皮肤对象
     banner.card = card; //储存对应的人物对象
     //创建立绘Box
-    var head = creatElmt("div", "head");
-    banner.appendChild(head);
+    var head = banner.appendChild(creatElmt("div", "head"));
+    head.onclick = function() { //点击时查看宽的头像
+        this.classList.toggle("widehead");
+    }
+    head.title = "点击宽屏查看图片";
+
     //添加立绘Box内容
-    /* //普通的img标签添加起来麻烦
-    var headimg = creatElmt("img", "picture"); //头像
-    headimg.src = 'char/' + sid + '.png';
-    head.appendChild(headimg);
-    */
     var headimg = creatElmt("div", "picture"); //头像
     headimg.style.backgroundImage = 'url("imgdata/char/' + sid + '.png")';
     head.appendChild(headimg);
