@@ -38,3 +38,7 @@ PC和移动端Chrome都不支持离线访问数据，请使用[火狐浏览器PC
 * #### 不会Git  
   点击本项目首页的发布页面(releases)，然后点击下载老版本的ZIP文件  
   ![发布](https://raw.githubusercontent.com/wiki/Mapaler/DaJiaDeHuanXiangXiang-Skin/images/releases.png)
+
+## 后期维护（如何更新版本数据）
+详见Wiki页面
+https://github.com/Mapaler/DaJiaDeHuanXiangXiang-Skin/wiki
