@@ -12,7 +12,7 @@
 
 <body>
     <h1>大家的幻想乡皮肤图鉴</h1>
-    <ul>
+    <ul id="message">
         <li>目前目前是1.0.2.2版本的数据，皮肤图片加Q版头像会<b>耗费约 58.2MB 的流量</b>，其他网页程序可能有 1.3MB，源代码及离线（省流量）查看方法见<a href="https://github.com/Mapaler/DaJiaDeHuanXiangXiang-Skin#%E7%A6%BB%E7%BA%BF%E6%9F%A5%E7%9C%8B%E5%8A%9E%E6%B3%95" target="_blank">GitHub仓库</a>。</li>
         <li><a href="imgdata/char/ATHH00003.png" target="_blank">嫦娥？</a>、<a href="imgdata/char/ATHH00004.png" target="_blank">玉兔？</a>，2个BOSS专用人物未显示。</li>
         <li>数据是每次你访问本页面的时候即时从apk解压的游戏原始数据提取，“spell.plist”因为字符不符合xml规范，稍作了修改（"&amp;"→"&amp;amp;"），其他都是原样的。</li>
@@ -21,6 +21,33 @@
         <li>有不认识的人物时，点击图鉴的角色名可以看人物介绍</li>
         <li>2018年4月10日 1、支持1.0.2.2开始的新魔力符卡ID规则；2、点击人物立绘，可展开宽屏显示。</li>
     </ul>
+    <script type="text/javascript">
+        var msg = document.getElementById("message");
+        msg.add = function(children) {
+            var li = this.appendChild(document.createElement("li"));
+            if (!children instanceof Array) { //如果传入不是数组，则改成数组
+                children = [children];
+            }
+            for (var ci = 0; ci < children.length; ci++) {
+                var child = children[ci];
+                if (typeof(child) == "string" || typeof(child) == "number") {
+                    li.appendChild(document.createTextNode(child));
+                } else if (child.nodeName != undefined) {
+                    li.appendChild(child);
+                } else {
+                    li.appendChild(document.createTextNode("未知的子节点类型"));
+                }
+            }
+            return li;
+        }
+        if (/https?:/.test(location.protocol) && location.hostname != "mapaler.oschina.io") {
+            var lnk = document.createElement("a");
+            lnk.href = "//mapaler.oschina.io/dajiadehuanxiangxiang-skin/";
+            lnk.appendChild(document.createTextNode("网页链接"));
+            lnk.target = "_blank";
+            msg.add(["除了GitHub外，在国内“码云”部署了本图鉴的镜像，查看图片会快很多。", lnk]);
+        }
+    </script>
     <div id="skin-sort">
         <label>皮肤排序方式
         <select id="sort-type">
