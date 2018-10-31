@@ -404,12 +404,12 @@ function creatSkinBanner(skin, skinIndex) {
         "宴请人-小": cardArr1.length > 0 ? cardArr1.map(function(item) { return item.cardname }).join("，") : [],
         "宴请人-中": cardArr2.length > 0 ? cardArr2.map(function(item) { return item.cardname }).join("，") : [],
         "宴请人-大": cardArr3.length > 0 ? cardArr3.map(function(item) { return item.cardname }).join("，") : [],
-        "初次见面": skin.description1,
-        "再次见面": skin.description2,
-        "早上好": skin.dialog1,
-        "中午好": skin.dialog2,
-        "下午好": skin.dialog3,
-        "晚上好": skin.dialog4,
+        "初次见面": skin.description1 || "-",
+        "再次见面": skin.description2 || "-",
+        "早上好": skin.dialog1 || "-",
+        "中午好": skin.dialog2 || "-",
+        "下午好": skin.dialog3 || "-",
+        "晚上好": skin.dialog4 || "-",
     };
     var detailDL = buildDetail(infos);
     detail.appendChild(detailDL);

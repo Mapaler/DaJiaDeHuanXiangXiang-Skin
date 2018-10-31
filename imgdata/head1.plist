@@ -7,7 +7,7 @@
             <key>head/ATH000301.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{686,770},{98,136}}</string>
+                <string>{{1236,512},{98,136}}</string>
                 <key>offset</key>
                 <string>{9,-32}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>head/ATH000501.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{462,214},{114,146}}</string>
+                <string>{{568,104},{114,146}}</string>
                 <key>offset</key>
                 <string>{0,-27}</string>
                 <key>rotated</key>
@@ -30,10 +30,23 @@
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
+            <key>head/ATH000601.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1752,110},{100,158}}</string>
+                <key>offset</key>
+                <string>{-2,-21}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{48,42},{100,158}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
             <key>head/ATH000701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{578,448},{104,138}}</string>
+                <string>{{426,372},{104,138}}</string>
                 <key>offset</key>
                 <string>{9,-31}</string>
                 <key>rotated</key>
@@ -46,11 +59,11 @@
             <key>head/ATH000901.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1098,114},{110,140}}</string>
+                <string>{{1004,236},{110,140}}</string>
                 <key>offset</key>
                 <string>{-5,-30}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{40,60},{110,140}}</string>
                 <key>sourceSize</key>
@@ -59,11 +72,11 @@
             <key>head/ATH000902.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,2},{102,168}}</string>
+                <string>{{280,2},{102,168}}</string>
                 <key>offset</key>
                 <string>{-1,-16}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{48,32},{102,168}}</string>
                 <key>sourceSize</key>
@@ -72,11 +85,11 @@
             <key>head/ATH001301.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{198,830},{98,148}}</string>
+                <string>{{1548,214},{98,148}}</string>
                 <key>offset</key>
                 <string>{0,-26}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{51,52},{98,148}}</string>
                 <key>sourceSize</key>
@@ -85,7 +98,7 @@
             <key>head/ATH001701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{98,836},{98,156}}</string>
+                <string>{{372,214},{98,156}}</string>
                 <key>offset</key>
                 <string>{4,-22}</string>
                 <key>rotated</key>
@@ -98,11 +111,11 @@
             <key>head/ATH001801.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,510},{102,164}}</string>
+                <string>{{960,2},{102,164}}</string>
                 <key>offset</key>
                 <string>{-1,-18}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{48,36},{102,164}}</string>
                 <key>sourceSize</key>
@@ -111,7 +124,7 @@
             <key>head/ATH002701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{470,106},{106,148}}</string>
+                <string>{{280,106},{106,148}}</string>
                 <key>offset</key>
                 <string>{16,-26}</string>
                 <key>rotated</key>
@@ -124,33 +137,33 @@
             <key>head/ATH002801.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{310,468},{114,140}}</string>
+                <string>{{862,106},{114,140}}</string>
                 <key>offset</key>
                 <string>{1,-30}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{44,60},{114,140}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
-            <key>head/ATH003201.png</key>
+            <key>head/ATH003001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{198,676},{88,152}}</string>
+                <string>{{256,582},{116,148}}</string>
                 <key>offset</key>
-                <string>{-1,-24}</string>
+                <string>{7,-26}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
-                <string>{{55,48},{88,152}}</string>
+                <string>{{49,52},{116,148}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>head/ATH003401.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{432,330},{116,142}}</string>
+                <string>{{554,582},{116,142}}</string>
                 <key>offset</key>
                 <string>{-3,-29}</string>
                 <key>rotated</key>
@@ -163,33 +176,20 @@
             <key>head/ATH003402.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,676},{94,168}}</string>
+                <string>{{1300,2},{94,168}}</string>
                 <key>offset</key>
                 <string>{3,-16}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{56,32},{94,168}}</string>
-                <key>sourceSize</key>
-                <string>{200,200}</string>
-            </dict>
-            <key>head/ATH003602.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{106,344},{96,170}}</string>
-                <key>offset</key>
-                <string>{3,-15}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{55,30},{96,170}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>head/ATH004001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{288,710},{106,136}}</string>
+                <string>{{430,106},{106,136}}</string>
                 <key>offset</key>
                 <string>{9,-32}</string>
                 <key>rotated</key>
@@ -202,24 +202,37 @@
             <key>head/ATH004002.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{208,2},{106,160}}</string>
+                <string>{{1802,2},{106,160}}</string>
                 <key>offset</key>
                 <string>{-2,-20}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{45,40},{106,160}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH0041A1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,2},{108,162}}</string>
+                <key>offset</key>
+                <string>{1,-19}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{47,38},{108,162}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>head/ATH004501.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{308,328},{122,138}}</string>
+                <string>{{566,342},{122,138}}</string>
                 <key>offset</key>
                 <string>{0,-31}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{39,62},{122,138}}</string>
                 <key>sourceSize</key>
@@ -228,11 +241,11 @@
             <key>head/ATH005601.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{944,794},{102,122}}</string>
+                <string>{{930,596},{102,122}}</string>
                 <key>offset</key>
                 <string>{4,-39}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{53,78},{102,122}}</string>
                 <key>sourceSize</key>
@@ -241,7 +254,7 @@
             <key>head/ATH005701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{796,2},{106,152}}</string>
+                <string>{{1598,106},{106,152}}</string>
                 <key>offset</key>
                 <string>{7,-24}</string>
                 <key>rotated</key>
@@ -254,7 +267,7 @@
             <key>head/ATH005801.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{718,346},{108,142}}</string>
+                <string>{{1258,210},{108,142}}</string>
                 <key>offset</key>
                 <string>{5,-29}</string>
                 <key>rotated</key>
@@ -267,11 +280,11 @@
             <key>head/ATH006001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{576,336},{110,140}}</string>
+                <string>{{1146,202},{110,140}}</string>
                 <key>offset</key>
                 <string>{13,-30}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{58,60},{110,140}}</string>
                 <key>sourceSize</key>
@@ -280,20 +293,72 @@
             <key>head/ATH006002.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,516},{98,158}}</string>
+                <string>{{110,326},{98,158}}</string>
                 <key>offset</key>
                 <string>{1,-21}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{52,42},{98,158}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH006301.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{106,526},{118,148}}</string>
+                <key>offset</key>
+                <string>{5,-26}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{46,52},{118,148}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH006401.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1286,98},{110,156}}</string>
+                <key>offset</key>
+                <string>{6,-22}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{51,44},{110,156}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH006602.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{112,2},{104,166}}</string>
+                <key>offset</key>
+                <string>{-3,-17}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{45,34},{104,166}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH006701.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1444,98},{114,152}}</string>
+                <key>offset</key>
+                <string>{4,-24}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{47,48},{114,152}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>head/ATH006901.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{640,2},{104,154}}</string>
+                <string>{{270,372},{104,154}}</string>
                 <key>offset</key>
                 <string>{1,-23}</string>
                 <key>rotated</key>
@@ -303,14 +368,27 @@
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
+            <key>head/ATH007201.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{110,214},{110,158}}</string>
+                <key>offset</key>
+                <string>{2,-21}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{47,42},{110,158}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
             <key>head/ATH007701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,174},{100,168}}</string>
+                <string>{{622,2},{100,168}}</string>
                 <key>offset</key>
                 <string>{-1,-16}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{49,32},{100,168}}</string>
                 <key>sourceSize</key>
@@ -319,24 +397,37 @@
             <key>head/ATH007901.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{98,676},{98,158}}</string>
+                <string>{{108,426},{98,158}}</string>
                 <key>offset</key>
                 <string>{-1,-21}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{50,42},{98,158}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH008101.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,166},{106,164}}</string>
+                <key>offset</key>
+                <string>{1,-18}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{48,36},{106,164}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>head/ATH008301.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{106,2},{100,170}}</string>
+                <string>{{450,2},{100,170}}</string>
                 <key>offset</key>
                 <string>{2,-15}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{52,30},{100,170}}</string>
                 <key>sourceSize</key>
@@ -345,11 +436,11 @@
             <key>head/ATH008401.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{208,164},{104,160}}</string>
+                <string>{{112,108},{104,160}}</string>
                 <key>offset</key>
                 <string>{-3,-20}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{45,40},{104,160}}</string>
                 <key>sourceSize</key>
@@ -358,7 +449,7 @@
             <key>head/ATH008501.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{480,2},{102,158}}</string>
+                <string>{{1126,98},{102,158}}</string>
                 <key>offset</key>
                 <string>{2,-21}</string>
                 <key>rotated</key>
@@ -371,7 +462,7 @@
             <key>head/ATH009001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{610,220},{114,144}}</string>
+                <string>{{570,466},{114,144}}</string>
                 <key>offset</key>
                 <string>{1,-28}</string>
                 <key>rotated</key>
@@ -384,7 +475,7 @@
             <key>head/ATH009201.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{620,108},{110,146}}</string>
+                <string>{{706,342},{110,146}}</string>
                 <key>offset</key>
                 <string>{-6,-27}</string>
                 <key>rotated</key>
@@ -397,11 +488,11 @@
             <key>head/ATH009601.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{950,2},{100,156}}</string>
+                <string>{{270,214},{100,156}}</string>
                 <key>offset</key>
                 <string>{-3,-22}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{47,44},{100,156}}</string>
                 <key>sourceSize</key>
@@ -410,7 +501,7 @@
             <key>head/ATH009701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{950,104},{102,146}}</string>
+                <string>{{422,478},{102,146}}</string>
                 <key>offset</key>
                 <string>{-3,-27}</string>
                 <key>rotated</key>
@@ -423,7 +514,7 @@
             <key>head/ATH009801.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{768,110},{114,144}}</string>
+                <string>{{716,106},{114,144}}</string>
                 <key>offset</key>
                 <string>{1,-28}</string>
                 <key>rotated</key>
@@ -436,7 +527,7 @@
             <key>head/ATH009901.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{432,448},{98,144}}</string>
+                <string>{{1258,320},{98,144}}</string>
                 <key>offset</key>
                 <string>{3,-28}</string>
                 <key>rotated</key>
@@ -449,11 +540,11 @@
             <key>head/ATH010001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{426,548},{92,142}}</string>
+                <string>{{472,214},{92,142}}</string>
                 <key>offset</key>
                 <string>{7,-29}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{61,58},{92,142}}</string>
                 <key>sourceSize</key>
@@ -462,7 +553,7 @@
             <key>head/ATH010301.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{316,2},{102,162}}</string>
+                <string>{{1638,2},{102,162}}</string>
                 <key>offset</key>
                 <string>{0,-19}</string>
                 <key>rotated</key>
@@ -475,7 +566,7 @@
             <key>head/ATH010801.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,172},{102,168}}</string>
+                <string>{{2,500},{102,168}}</string>
                 <key>offset</key>
                 <string>{4,-16}</string>
                 <key>rotated</key>
@@ -488,20 +579,33 @@
             <key>head/ATH010802.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,342},{102,166}}</string>
+                <string>{{792,2},{102,166}}</string>
                 <key>offset</key>
                 <string>{2,-17}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{51,34},{102,166}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/ATH010803.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{2,332},{104,166}}</string>
+                <key>offset</key>
+                <string>{3,-17}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{51,34},{104,166}}</string>
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
             <key>head/ATH011701.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{426,642},{120,128}}</string>
+                <string>{{1004,106},{120,128}}</string>
                 <key>offset</key>
                 <string>{-3,-36}</string>
                 <key>rotated</key>
@@ -514,11 +618,11 @@
             <key>head/ATHZ01501.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{204,344},{102,146}}</string>
+                <string>{{856,222},{102,146}}</string>
                 <key>offset</key>
                 <string>{4,-27}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{53,54},{102,146}}</string>
                 <key>sourceSize</key>
@@ -527,11 +631,11 @@
             <key>head/ATHZ02001.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,846},{94,166}}</string>
+                <string>{{1470,2},{94,166}}</string>
                 <key>offset</key>
                 <string>{4,-17}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{57,34},{94,166}}</string>
                 <key>sourceSize</key>
@@ -540,7 +644,7 @@
             <key>head/EAA000101.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{824,796},{118,110}}</string>
+                <string>{{854,342},{118,110}}</string>
                 <key>offset</key>
                 <string>{-6,-25}</string>
                 <key>rotated</key>
@@ -550,14 +654,27 @@
                 <key>sourceSize</key>
                 <string>{200,160}</string>
             </dict>
+            <key>head/EAA000110.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1146,344},{118,110}}</string>
+                <key>offset</key>
+                <string>{-6,-25}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{35,50},{118,110}}</string>
+                <key>sourceSize</key>
+                <string>{200,160}</string>
+            </dict>
             <key>head/EAA000201.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{506,886},{128,104}}</string>
+                <string>{{1664,340},{128,104}}</string>
                 <key>offset</key>
                 <string>{-8,-48}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{28,96},{128,104}}</string>
                 <key>sourceSize</key>
@@ -566,7 +683,7 @@
             <key>head/EAA000203.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{812,908},{126,92}}</string>
+                <string>{{1404,418},{126,92}}</string>
                 <key>offset</key>
                 <string>{-9,-54}</string>
                 <key>rotated</key>
@@ -579,7 +696,7 @@
             <key>head/EAA000204.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{718,456},{140,108}}</string>
+                <string>{{974,348},{140,108}}</string>
                 <key>offset</key>
                 <string>{-11,-46}</string>
                 <key>rotated</key>
@@ -592,11 +709,11 @@
             <key>head/EAA000205.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{552,770},{132,104}}</string>
+                <string>{{1812,212},{132,104}}</string>
                 <key>offset</key>
                 <string>{-11,-48}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{23,96},{132,104}}</string>
                 <key>sourceSize</key>
@@ -605,7 +722,7 @@
             <key>head/EAA000206.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{314,210},{146,116}}</string>
+                <string>{{406,582},{146,116}}</string>
                 <key>offset</key>
                 <string>{-8,-42}</string>
                 <key>rotated</key>
@@ -618,11 +735,11 @@
             <key>head/EAA000301.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{704,870},{106,124}}</string>
+                <string>{{1794,346},{106,124}}</string>
                 <key>offset</key>
                 <string>{0,-23}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{47,61},{106,124}}</string>
                 <key>sourceSize</key>
@@ -631,7 +748,7 @@
             <key>head/EAA000302.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{310,610},{98,114}}</string>
+                <string>{{1374,512},{98,114}}</string>
                 <key>offset</key>
                 <string>{-2,-35}</string>
                 <key>rotated</key>
@@ -644,7 +761,7 @@
             <key>head/EAA000401.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1102,256},{92,116}}</string>
+                <string>{{698,582},{92,116}}</string>
                 <key>offset</key>
                 <string>{-3,-7}</string>
                 <key>rotated</key>
@@ -657,11 +774,11 @@
             <key>head/EAA000403.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{426,772},{112,124}}</string>
+                <string>{{1698,214},{112,124}}</string>
                 <key>offset</key>
                 <string>{-3,22}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{41,16},{112,124}}</string>
                 <key>sourceSize</key>
@@ -670,7 +787,7 @@
             <key>head/EAA000503.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{756,226},{118,142}}</string>
+                <string>{{712,222},{118,142}}</string>
                 <key>offset</key>
                 <string>{10,-13}</string>
                 <key>rotated</key>
@@ -683,7 +800,7 @@
             <key>head/EAA000504.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{316,106},{102,152}}</string>
+                <string>{{268,478},{102,152}}</string>
                 <key>offset</key>
                 <string>{1,-24}</string>
                 <key>rotated</key>
@@ -696,7 +813,7 @@
             <key>head/EAA000506.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{900,256},{88,84}}</string>
+                <string>{{1550,610},{88,84}}</string>
                 <key>offset</key>
                 <string>{-7,-27}</string>
                 <key>rotated</key>
@@ -709,7 +826,7 @@
             <key>head/EAA000507.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{298,818},{106,136}}</string>
+                <string>{{922,458},{106,136}}</string>
                 <key>offset</key>
                 <string>{10,-32}</string>
                 <key>rotated</key>
@@ -722,11 +839,11 @@
             <key>head/EAA000508.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{206,492},{102,144}}</string>
+                <string>{{1402,214},{102,144}}</string>
                 <key>offset</key>
                 <string>{-10,-28}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{39,56},{102,144}}</string>
                 <key>sourceSize</key>
@@ -735,7 +852,7 @@
             <key>head/EAA000511.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{974,398},{112,92}}</string>
+                <string>{{1532,418},{112,92}}</string>
                 <key>offset</key>
                 <string>{2,-6}</string>
                 <key>rotated</key>
@@ -748,7 +865,7 @@
             <key>head/EAA000512.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{986,208},{110,92}}</string>
+                <string>{{1666,558},{110,92}}</string>
                 <key>offset</key>
                 <string>{2,-4}</string>
                 <key>rotated</key>
@@ -761,7 +878,7 @@
             <key>head/EAA000513.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{986,302},{114,94}}</string>
+                <string>{{1548,314},{114,94}}</string>
                 <key>offset</key>
                 <string>{2,-6}</string>
                 <key>rotated</key>
@@ -774,7 +891,7 @@
             <key>head/EAA000514.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{862,346},{110,100}}</string>
+                <string>{{1768,454},{110,100}}</string>
                 <key>offset</key>
                 <string>{6,0}</string>
                 <key>rotated</key>
@@ -784,23 +901,10 @@
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
-            <key>head/EAA000515.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{852,566},{98,122}}</string>
-                <key>offset</key>
-                <string>{1,-11}</string>
-                <key>rotated</key>
-                <true/>
-                <key>sourceColorRect</key>
-                <string>{{52,50},{98,122}}</string>
-                <key>sourceSize</key>
-                <string>{200,200}</string>
-            </dict>
             <key>head/EAA000517.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{712,566},{138,98}}</string>
+                <string>{{1404,318},{138,98}}</string>
                 <key>offset</key>
                 <string>{-5,-3}</string>
                 <key>rotated</key>
@@ -813,7 +917,7 @@
             <key>head/EAA000518.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1108,2},{100,110}}</string>
+                <string>{{1666,446},{100,110}}</string>
                 <key>offset</key>
                 <string>{4,-30}</string>
                 <key>rotated</key>
@@ -826,11 +930,11 @@
             <key>head/EAA000519.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{612,876},{90,138}}</string>
+                <string>{{1258,420},{90,138}}</string>
                 <key>offset</key>
                 <string>{5,-31}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{60,62},{90,138}}</string>
                 <key>sourceSize</key>
@@ -839,20 +943,59 @@
             <key>head/EAA000601.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{940,918},{123,90}}</string>
+                <string>{{1918,208},{123,90}}</string>
                 <key>offset</key>
                 <string>{1,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{2,9},{123,90}}</string>
                 <key>sourceSize</key>
                 <string>{125,108}</string>
             </dict>
+            <key>head/EAAH00106.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{566,220},{144,120}}</string>
+                <key>offset</key>
+                <string>{0,6}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{28,34},{144,120}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/EAAH00305.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1876,614},{74,72}}</string>
+                <key>offset</key>
+                <string>{-1,2}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{17,17},{74,72}}</string>
+                <key>sourceSize</key>
+                <string>{110,110}</string>
+            </dict>
+            <key>head/EAAH00308.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1880,546},{84,66}}</string>
+                <key>offset</key>
+                <string>{1,-67}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{59,134},{84,66}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
             <key>head/EAAH00801.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{920,666},{94,126}}</string>
+                <string>{{716,454},{94,126}}</string>
                 <key>offset</key>
                 <string>{0,-3}</string>
                 <key>rotated</key>
@@ -865,7 +1008,7 @@
             <key>head/EAAH00802.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{406,886},{98,130}}</string>
+                <string>{{1136,464},{98,130}}</string>
                 <key>offset</key>
                 <string>{-1,-5}</string>
                 <key>rotated</key>
@@ -875,23 +1018,10 @@
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
-            <key>head/EAAH00803.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{824,666},{94,128}}</string>
-                <key>offset</key>
-                <string>{-2,-6}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{51,42},{94,128}}</string>
-                <key>sourceSize</key>
-                <string>{200,200}</string>
-            </dict>
             <key>head/EAAH00806.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{686,666},{102,136}}</string>
+                <string>{{792,596},{102,136}}</string>
                 <key>offset</key>
                 <string>{0,-7}</string>
                 <key>rotated</key>
@@ -904,11 +1034,11 @@
             <key>head/EAAH00807.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{548,664},{104,136}}</string>
+                <string>{{1030,458},{104,136}}</string>
                 <key>offset</key>
                 <string>{1,-8}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{49,40},{104,136}}</string>
                 <key>sourceSize</key>
@@ -917,7 +1047,7 @@
             <key>head/EAAH01101.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1102,374},{96,86}}</string>
+                <string>{{1158,612},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -930,7 +1060,7 @@
             <key>head/EAAH01102.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1088,462},{96,86}}</string>
+                <string>{{1256,612},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -943,7 +1073,7 @@
             <key>head/EAAH01103.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1074,550},{96,86}}</string>
+                <string>{{1354,612},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -956,7 +1086,7 @@
             <key>head/EAAH01104.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1016,638},{96,86}}</string>
+                <string>{{1452,612},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -969,7 +1099,7 @@
             <key>head/EAAH01105.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1114,638},{96,86}}</string>
+                <string>{{1490,512},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -982,11 +1112,11 @@
             <key>head/EAAH01106.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1048,736},{96,86}}</string>
+                <string>{{1578,512},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{53,56},{96,86}}</string>
                 <key>sourceSize</key>
@@ -995,7 +1125,7 @@
             <key>head/EAAH01107.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1048,824},{96,86}}</string>
+                <string>{{1778,556},{96,86}}</string>
                 <key>offset</key>
                 <string>{1,1}</string>
                 <key>rotated</key>
@@ -1005,10 +1135,36 @@
                 <key>sourceSize</key>
                 <string>{200,200}</string>
             </dict>
+            <key>head/EAAH01202.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1054,596},{102,102}}</string>
+                <key>offset</key>
+                <string>{0,-49}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{49,98},{102,102}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
+            <key>head/EAAH01204.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1126,2},{94,172}}</string>
+                <key>offset</key>
+                <string>{-11,-14}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{42,28},{94,172}}</string>
+                <key>sourceSize</key>
+                <string>{200,200}</string>
+            </dict>
             <key>head/EAAH01206.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1065,912},{86,90}}</string>
+                <string>{{1880,454},{86,90}}</string>
                 <key>offset</key>
                 <string>{1,-55}</string>
                 <key>rotated</key>
@@ -1021,7 +1177,7 @@
             <key>head/EAAH01208.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{976,492},{96,96}}</string>
+                <string>{{1912,110},{96,96}}</string>
                 <key>offset</key>
                 <string>{-8,-52}</string>
                 <key>rotated</key>
@@ -1034,7 +1190,7 @@
             <key>head/EAAH01209.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{860,456},{90,108}}</string>
+                <string>{{1920,333},{90,108}}</string>
                 <key>offset</key>
                 <string>{-5,-46}</string>
                 <key>rotated</key>
@@ -1047,11 +1203,11 @@
             <key>head/EBA001006.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{570,554},{108,140}}</string>
+                <string>{{812,454},{108,140}}</string>
                 <key>offset</key>
                 <string>{12,-30}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{58,60},{108,140}}</string>
                 <key>sourceSize</key>
@@ -1065,9 +1221,9 @@
             <key>realTextureFileName</key>
             <string>head1.pvr.ccz</string>
             <key>size</key>
-            <string>{1210,1018}</string>
+            <string>{2013,700}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:eb17430a28697ecff4ce3563f15a0f49:29ee63da6dc48b9ea840170619bb3d32:358c8a25200090bf3b582ff076a6ced7$</string>
+            <string>$TexturePacker:SmartUpdate:f7516b4339c2a958d0d3006c7093ea40:c4e68b7e4afe6dc6e4748550c716b215:358c8a25200090bf3b582ff076a6ced7$</string>
             <key>textureFileName</key>
             <string>head1.pvr.ccz</string>
         </dict>
