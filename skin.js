@@ -1,9 +1,11 @@
 // JavaScript Document
 var binfo; //用于显示进度信息
+var supportWebP = false;
 window.onload = function() {
     binfo = document.querySelector("#basic-info");
-    console.log("您的浏览器" + (check_support_webp()?"支持":"不支持") + "WebP格式。");
-    if (check_support_webp())
+    supportWebP = check_support_webp();
+    console.log("您的浏览器" + (supportWebP?"支持":"不支持") + "WebP格式。");
+    if (supportWebP)
     {
         document.querySelector("#Pic-Format").innerHTML = "有损WebP";
         document.querySelector("#MB").innerHTML = "13.25";
@@ -351,13 +353,13 @@ function creatSkinBanner(skin, skinIndex) {
 
     //添加立绘Box内容
     var headimg = creatElmt("div", "picture"); //头像
-    headimg.style.backgroundImage = 'url("imgdata/char/' + sid + (check_support_webp()?".webp":".png") + '")';
+    headimg.style.backgroundImage = 'url("imgdata/char/' + sid + (supportWebP?".webp":".png") + '")';
     head.appendChild(headimg);
 
     var qheadimg = creatElmt("div", "qhead"); //Q版头像
     head.appendChild(qheadimg);
     if (qhead != undefined) {
-        qheadimg.style.backgroundImage = 'url("imgdata/' + thisQHeadXML.filename + (check_support_webp()?".webp":".png") + '")'; //图片地址
+        qheadimg.style.backgroundImage = 'url("imgdata/' + thisQHeadXML.filename + (supportWebP?".webp":".png") + '")'; //图片地址
         qheadimg.style.backgroundPosition = "-" + qhead.frame[0][0] + "px -" + qhead.frame[0][1] + "px"; //图片位置偏移定位
         var ro = qhead.rotated; //是否逆时针旋转90°
         qheadimg.style.width = qhead.frame[1][ro ? 1 : 0] + "px"; //图像宽
