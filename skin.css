@@ -193,6 +193,10 @@
     color: rgb(50, 53, 190);
     text-shadow: white 0 0 2px, white 0 0 2px;
 }
+.details-dl .specialcard {
+    color: rgb(190, 50, 62);
+    text-shadow: lightgrey 0 0 2px, lightgrey 0 0 2px;
+}
 
 .details-dl .title::after {
     content: "：";

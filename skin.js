@@ -468,6 +468,11 @@ function creatSkinBanner(skin, skinIndex) {
     var spellidA = skin.spell_card_id_atk.length > 0 ? skin.spell_card_id_atk : spePrefix + "A01"; //攻击
     var spellidB = skin.spell_card_id_def.length > 0 ? skin.spell_card_id_def : spePrefix + "B01"; //防御
     var spellidC = skin.spell_card_id_aid.length > 0 ? skin.spell_card_id_aid : spePrefix + "C01"; //支援
+    var idxSkin = /\d$/.exec(spellidA);
+    if (idxSkin && idxSkin.length>0)
+    {
+        var spellidD = spePrefix + "D0" + idxSkin[0]; //特殊
+    }
 
     function crtSpellArr(spl) {
         if (typeof(spl) != "undefined") {
@@ -535,6 +540,12 @@ function creatSkinBanner(skin, skinIndex) {
             spells["魔力" + type[0]].titleClassName = "magiccard";
         }
     })
+    if (spellidD && //先判断有没有
+        spellXML.json[spellidD]) {
+        spells["特殊符卡"] = crtSpellArr(spellXML.json[spellidD]);
+        spells["特殊符卡"].titleClassName = "specialcard";
+    }
+
     var spellsDL = buildDetail(spells);
     spell_card.appendChild(spellsDL);
 
