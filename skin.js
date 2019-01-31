@@ -43,7 +43,12 @@ if (typeof(GM_xmlhttpRequest) == "undefined") {
 }
 //判断是否支持webp格式图片 支持 返回true   不支持 返回false
 function check_support_webp() {
-    return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
+    //通过UserAgent获取火狐浏览器的版本
+    var fxVer = /Firefox\/(\d+)(?:\.\d+)+/.exec(navigator.userAgent);
+    if (fxVer && fxVer[1]>=65)
+        return true;
+    else
+        return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
 }
 //通用的获取XML数据函数，返回
 var getXML = function(url, isJSON) {
