@@ -26,7 +26,7 @@ https://mapaler.gitee.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图�
 
 * #### 不会Git  
   点击本项目首页的克隆和下载（绿色按钮，往上翻到页面顶部就能看到），然后点击下载ZIP文件按钮  
-  ![下载](https://raw.githubusercontent.com/wiki/Mapaler/DaJiaDeHuanXiangXiang-Skin/images/downloadzip.png)  
+  ![下载](docimages/downloadzip.png)  
   下载完成解压后用火狐浏览器打开index.html文件即可
 
 ### 查看过去的版本
@@ -37,8 +37,7 @@ https://mapaler.gitee.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图�
 
 * #### 不会Git  
   点击本项目首页的发布页面(releases)，然后点击下载老版本的ZIP文件  
-  ![发布](https://raw.githubusercontent.com/wiki/Mapaler/DaJiaDeHuanXiangXiang-Skin/images/releases.png)
+  ![发布](docimages/releases.png)
 
-## 后期维护（如何更新版本数据）
-详见Wiki页面
-https://github.com/Mapaler/DaJiaDeHuanXiangXiang-Skin/wiki
+## 后期维护
+[如何更新版本数据](Update.md)
