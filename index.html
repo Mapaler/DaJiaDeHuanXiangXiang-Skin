@@ -20,6 +20,7 @@
         <li>有不认识的人物时，点击图鉴的角色名可以看人物介绍；点击人物立绘，可展开宽屏显示。</li>
         <li>Q版头像的晃动速度与总出击消耗相关（一般消耗越多越厉害所以就越慢）</li>
         <li>2019年1月31日 火狐65.0开始支持WebP了，可以节省很多流量哦！</li>
+        <li>2019年11月11日 开始支持Chrome本地打开了哦</li>
     </ul>
     <script type="text/javascript">
         var msg = document.getElementById("message");
@@ -40,9 +41,9 @@
             }
             return li;
         }
-        if (/https?:/.test(location.protocol) && location.hostname != "mapaler.oschina.io") {
+        if (/https?:/.test(location.protocol) && location.hostname != "mapaler.oschina.io" && location.hostname != "mapaler.gitee.io") {
             var lnk = document.createElement("a");
-            lnk.href = "//mapaler.oschina.io/dajiadehuanxiangxiang-skin/";
+            lnk.href = "//mapaler.gitee.io/dajiadehuanxiangxiang-skin/";
             lnk.appendChild(document.createTextNode("网页链接"));
             lnk.target = "_blank";
             msg.add(["除了GitHub外，在国内“码云”部署了本图鉴的镜像，查看图片会快很多。", lnk]);

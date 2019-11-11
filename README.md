@@ -2,7 +2,7 @@
 
 ## 在线查看（保持最新版本）
 https://mapaler.github.io/DaJiaDeHuanXiangXiang-Skin/  
-http://mapaler.oschina.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图片速度会快些，但是我可能会忘记更新)
+https://mapaler.gitee.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图片速度会快些，但是我可能会忘记更新)
 
 ## 百度贴吧
 [大家的幻想乡吧](http://tieba.baidu.com/f?kw=%E5%A4%A7%E5%AE%B6%E7%9A%84%E5%B9%BB%E6%83%B3%E4%B9%A1)
@@ -18,7 +18,7 @@ http://mapaler.oschina.io/dajiadehuanxiangxiang-skin/ (国内镜像，查看图�
 希望节省流量的话可以将本项目下载下来离线查看。
 
 ### 浏览器要求
-PC和移动端Chrome都不支持离线访问数据，请使用[火狐浏览器PC/安卓版](https://www.mozilla.org/zh-CN/firefox/new/)，不信的你可以用Chrome试试。
+火狐68.0及以后需要在`about:config`设定`privacy.file_unique_origin`为`false`。
 
 ### 下载最新版本
 * #### 会Git  

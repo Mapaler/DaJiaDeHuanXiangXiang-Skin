@@ -28,9 +28,15 @@ if (typeof(GM_xmlhttpRequest) == "undefined") {
             {
                 if (xhr.readyState === xhr.DONE) {
                     if (xhr.status === 200 && GM_param.onload)
+                    {
                         GM_param.onload(xhr);
+                    }
                     if (xhr.status !== 200 && GM_param.onerror)
+                    {
                         GM_param.onerror(xhr);
+                    }
+                    xhr.abort();
+                    return;
                 }
             }
 
@@ -62,31 +68,46 @@ var getXML = function(url, isJSON) {
     _this.xml = null;
     _this.filename = "";
     _this.getData = function(callback) {
+        function dealData(responseXML)
+        {
+            _this.xml = responseXML;
+            var dict = _this.xml.documentElement.firstElementChild;
+            var keys = dict.getElementsByTagName("key");
+            var strs = dict.getElementsByTagName("string");
+
+            for (var ki = 0, kil = keys.length; ki < kil; ki++) {
+                var keyStr = keys[ki].textContent;
+                var strObj = _this.isJSON ? JSON.parse(strs[ki].textContent) : strs[ki].textContent;
+                for (var itm in strObj) { //把所有文字里的数字转成真正的数字
+                    n = (typeof(strObj[itm]) == "string" && strObj[itm].length > 0) ? Number(strObj[itm]) : NaN;
+                    if (!isNaN(n)) {
+                        strObj[itm] = n;
+                    }
+                }
+                _this.keyArray.push(keyStr);
+                _this.jsonArray.push(strObj);
+                _this.json[keyStr] = strObj;
+            }
+            callback(_this);
+        }
         GM_xmlhttpRequest({
             method: 'get',
             url: _this.url,
             responseType: 'document',
             overrideMimeType: 'text/xml',
             onload: function(response) {
-                _this.xml = response.responseXML;
-                var dict = _this.xml.documentElement.firstElementChild;
-                var keys = dict.getElementsByTagName("key");
-                var strs = dict.getElementsByTagName("string");
-
-                for (var ki = 0, kil = keys.length; ki < kil; ki++) {
-                    var keyStr = keys[ki].textContent;
-                    var strObj = _this.isJSON ? JSON.parse(strs[ki].textContent) : strs[ki].textContent;
-                    for (var itm in strObj) { //把所有文字里的数字转成真正的数字
-                        n = (typeof(strObj[itm]) == "string" && strObj[itm].length > 0) ? Number(strObj[itm]) : NaN;
-                        if (!isNaN(n)) {
-                            strObj[itm] = n;
-                        }
-                    }
-                    _this.keyArray.push(keyStr);
-                    _this.jsonArray.push(strObj);
-                    _this.json[keyStr] = strObj;
+                dealData(response.responseXML);
+            },
+            onerror: function(response) {
+                var isChrome = navigator.userAgent.indexOf("Chrome") >=0;
+                if (isChrome && location.host.length == 0)
+                {
+                    console.info("因为是Chrome本地打开，正在尝试读取XML");
+                    dealData(response.responseXML);
+                }else
+                {
+                    console.error("XML数据获取错误",response);
                 }
-                callback(_this);
             }
         })
     }
@@ -103,39 +124,54 @@ var getXML = function(url, isJSON) {
             }
             return valueNode;
         }
+        function tranToArr(istr) {
+            var nstr = istr.replace(/{/igm, "[").replace(/}/igm, "]");
+            return JSON.parse(nstr);
+        }
+        function dealData(responseXML)
+        {
+            _this.xml = responseXML;
+            var dict = _this.xml.documentElement.firstElementChild;
+            var rdict = getDictKeyValue(dict, "frames");
+            if (typeof(rdict) != "undefined") {
+                var keys = [].slice.call(rdict.children).filter(function(item) { return item.nodeName == "key" });
+                var dicts = [].slice.call(rdict.children).filter(function(item) { return item.nodeName == "dict" });
+
+                for (var ki = 0, kil = keys.length; ki < kil; ki++) {
+                    var keyStr = keys[ki].textContent;
+                    var vd = dicts[ki]; //储存值的dict
+
+                    var strObj = {
+                        frame: tranToArr(getDictKeyValue(vd, "frame").textContent),
+                        offset: tranToArr(getDictKeyValue(vd, "offset").textContent),
+                        rotated: eval(getDictKeyValue(vd, "rotated").nodeName),
+                        sourceColorRect: tranToArr(getDictKeyValue(vd, "sourceColorRect").textContent),
+                        sourceSize: tranToArr(getDictKeyValue(vd, "sourceSize").textContent),
+                    };
+                    _this.keyArray.push(keyStr);
+                    _this.jsonArray.push(strObj);
+                    _this.json[keyStr] = strObj;
+                }
+            }
+            callback(_this);
+        }
         GM_xmlhttpRequest({
             method: 'get',
             url: _this.url,
             responseType: 'document',
             overrideMimeType: 'text/xml',
             onload: function(response) {
-                function tranToArr(istr) {
-                    var nstr = istr.replace(/{/igm, "[").replace(/}/igm, "]");
-                    return JSON.parse(nstr);
-                }
-                _this.xml = response.responseXML;
-                var dict = _this.xml.documentElement.firstElementChild;
-                var rdict = getDictKeyValue(dict, "frames");
-                if (typeof(rdict) != "undefined") {
-                    var keys = [].slice.call(rdict.children).filter(function(item) { return item.nodeName == "key" });
-                    var dicts = [].slice.call(rdict.children).filter(function(item) { return item.nodeName == "dict" });
-
-                    for (var ki = 0, kil = keys.length; ki < kil; ki++) {
-                        var keyStr = keys[ki].textContent;
-                        var vd = dicts[ki]; //储存值的dict
-
-                        var strObj = {
-                            frame: tranToArr(getDictKeyValue(vd, "frame").textContent),
-                            offset: tranToArr(getDictKeyValue(vd, "offset").textContent),
-                            rotated: eval(getDictKeyValue(vd, "rotated").nodeName),
-                            sourceColorRect: tranToArr(getDictKeyValue(vd, "sourceColorRect").textContent),
-                            sourceSize: tranToArr(getDictKeyValue(vd, "sourceSize").textContent),
-                        };
-                        _this.keyArray.push(keyStr);
-                        _this.jsonArray.push(strObj);
-                        _this.json[keyStr] = strObj;
-                    }
-                    callback(_this);
+                dealData(response.responseXML);
+            },
+            onerror: function(response) {
+                var isChrome = navigator.userAgent.indexOf("Chrome") >=0;
+                if (isChrome && location.host.length == 0)
+                {
+                    console.info("因为是Chrome本地打开，正在尝试读取XML");
+                    dealData(response.responseXML);
+                }else
+                {
+                    console.error("XML数据获取错误",response);
                 }
             }
         })
