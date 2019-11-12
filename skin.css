@@ -93,12 +93,15 @@
     background-position: center center;
 }
 
-.head .qhead,
-.head .qhead_rotate {
+.head .qhead {
+    width: 200px;
+    height: 200px;
     position: absolute;
     bottom: 0;
     transform-origin: center bottom;
     animation: spring 0.4s ease-in-out infinite alternate;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .head .qhead_rotate {
