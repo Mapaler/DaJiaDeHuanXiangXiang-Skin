@@ -97,7 +97,6 @@ window.onload = function() {
     if (supportWebP)
     {
         document.querySelector("#Pic-Format").innerHTML = "有损WebP";
-        document.querySelector("#MB").innerHTML = "13.25";
     }
 
     //给排序下拉框添加功能
