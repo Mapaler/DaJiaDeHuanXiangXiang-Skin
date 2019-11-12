@@ -7,7 +7,7 @@ echo 设定转换质量为%quality%
 title 正在转换立绘
 for /f %%f in ('dir /b %dataDec%\char\charimg\*.png') do (
 if not exist %dataDec%\char\charimg\%%~nf.webp (
- cwebp.exe %dataDec%\char\charimg\%%f -q %quality% -o %dataDec%\char\charimg\%%~nf.webp
+ tools\cwebp.exe %dataDec%\char\charimg\%%f -q %quality% -o %dataDec%\char\charimg\%%~nf.webp
 ) else (
  echo 立绘 %%~nf.webp 已存在，跳过
 )
@@ -16,7 +16,7 @@ if not exist %dataDec%\char\charimg\%%~nf.webp (
 title 正在转换Q版图像
 for /f %%f in ('dir /b %dataDec%\char\charcute\*.png') do (
 if not exist %dataDec%\char\charcute\%%~nf.webp (
- cwebp.exe %dataDec%\char\charcute\%%f -q %quality% -o %dataDec%\char\charcute\%%~nf.webp
+ tools\cwebp.exe %dataDec%\char\charcute\%%f -q %quality% -o %dataDec%\char\charcute\%%~nf.webp
 ) else (
  echo Q版 %%~nf.webp 已存在，跳过
 )

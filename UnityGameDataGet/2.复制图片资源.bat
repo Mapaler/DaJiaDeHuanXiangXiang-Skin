@@ -12,8 +12,8 @@ for /f %%f in ('dir /b %dataSrc%\char\charimg\*.png') do (
 set str=%%~nf
 ::循环替换为大写，输出到!str!
 for %%i in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (call set str=%%str:%%i=%%i%%)
-set newpath=%dataDec%\char\charimg\!str!%%~xf
-if not exist !newpath! (copy %dataSrc%\char\charimg\%%f !newpath!) else (echo !str!%%~xf 已存在)
+set newpath=%dataDec%\char\charimg\!str!.png
+if not exist !newpath! (copy %dataSrc%\char\charimg\%%f !newpath!) else (echo !str!.png 已存在)
 )
 ::复制Q版
 title 复制Q版
@@ -24,6 +24,6 @@ for /f %%f in ('dir /b %dataSrc%\char\charcute\*.png') do (
 set str=%%~nf
 ::循环替换为大写，输出到!str!
 for %%i in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (call set str=%%str:%%i=%%i%%)
-set newpath=%dataDec%\char\charcute\!str!%%~xf
-if not exist !newpath! (copy %dataSrc%\char\charcute\%%f !newpath!) else (echo !str!%%~xf 已存在)
+set newpath=%dataDec%\char\charcute\!str!.png
+if not exist !newpath! (copy %dataSrc%\char\charcute\%%f !newpath!) else (echo !str!.png 已存在)
 )
