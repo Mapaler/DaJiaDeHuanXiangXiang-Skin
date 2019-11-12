@@ -34,3 +34,11 @@
 
 ## 更新文字说明和宴请信息
 1. 使用任意网页编辑软件修改`index.html`和`banquet-skin.html`就行，我一般是直接改源代码。
+
+## 使用到的工具
+|名称|程序文件名|官方网址|作用|
+|--|--|--|--|
+|7-zip|7z.exe|https://www.7-zip.org/|解包APK|
+|uTinyRipper|uTinyRipper.exe等|https://github.com/mafaca/UtinyRipper|导出Unity3D数据中的资源|
+|libwebp|cwebp.exe|https://developers.google.com/speed/webp/docs/precompiled|编码WebP|
+ 

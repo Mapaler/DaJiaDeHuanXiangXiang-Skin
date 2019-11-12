@@ -1,6 +1,5 @@
-/UnityGameDataGet/cwebp.exe
-/UnityGameDataGet/uTinyRipper_x64
-/UnityGameDataGet/7z.exe
+/UnityGameDataGet/*.exe
 /UnityGameDataGet/*.apk
+/UnityGameDataGet/uTinyRipper_x64
 /UnityGameDataGet/APK_Unpack
 /UnityGameDataGet/Export_Data

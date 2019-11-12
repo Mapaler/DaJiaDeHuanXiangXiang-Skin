@@ -1,20 +1,24 @@
 @echo off
-set quality=80
+::压缩质量
+set /a quality=80
+set dataDec=..\Resources
 echo 设定转换质量为%quality%
-::每次都重新转换head图片
-title 正在转换Q版图像
-echo 正在转换Q版图像
-for /f %%f in ('dir /b *.png') do (
- .\cwebp.exe "%%f" -q %quality% -o "%%~nf.webp"
-)
-::立绘不重新转换
+::转换立绘
 title 正在转换立绘
-echo 正在转换立绘
-for /f %%f in ('dir /b char\*.png') do (
-if not exist "char\%%~nf.webp" (
- .\cwebp.exe "char\%%f" -q %quality% -o "char\%%~nf.webp"
+for /f %%f in ('dir /b %dataDec%\char\charimg\*.png') do (
+if not exist %dataDec%\char\charimg\%%~nf.webp (
+ cwebp.exe %dataDec%\char\charimg\%%f -q %quality% -o %dataDec%\char\charimg\%%~nf.webp
 ) else (
- echo char\%%~nf.webp 已存在，跳过
+ echo 立绘 %%~nf.webp 已存在，跳过
+)
+)
+::转换Q版图像
+title 正在转换Q版图像
+for /f %%f in ('dir /b %dataDec%\char\charcute\*.png') do (
+if not exist %dataDec%\char\charcute\%%~nf.webp (
+ cwebp.exe %dataDec%\char\charcute\%%f -q %quality% -o %dataDec%\char\charcute\%%~nf.webp
+) else (
+ echo Q版 %%~nf.webp 已存在，跳过
 )
 )
 title 转换完毕
