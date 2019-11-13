@@ -36,11 +36,14 @@ class GameResInfo{
 				zlib.unzip(buffer, (err, buffer) => {
 					if (!err) {
 						_this.data = buffer.toString();
-						fs.writeFile('../data/'+_this.Name+'.json',_this.data,(err)=>{
+						fs.writeFile('../GameResInfo/'+_this.Name+'.json',_this.data,(err)=>{
 							if (!err)
 								console.log(_this.Name + '已保存');
+							else
+								console.log(_this.Name+' 写入发生错误',err);
 						});
 					} else {
+						console.log(_this.Name+' 解压错误',buffer.toString());
 						this.data = null;
 					}
 				});
