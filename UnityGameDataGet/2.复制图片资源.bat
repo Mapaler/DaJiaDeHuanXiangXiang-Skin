@@ -27,3 +27,11 @@ for %%i in (A B C D E F G H I J K L M N O P Q R S T U V W X Y Z) do (call set st
 set newpath=%dataDec%\char\charcute\!str!.png
 if not exist !newpath! (copy %dataSrc%\char\charcute\%%f !newpath!) else (echo !str!.png 已存在)
 )
+::复制道具
+title 复制道具
+echo 正在复制道具到网页资源
+if not exist %dataDec%\equipment (MKDIR %dataDec%\equipment)
+for /f %%f in ('dir /b %dataSrc%\equipment\*.png') do (
+set newpath=%dataDec%\equipment\%%~nf.png
+if not exist !newpath! (copy %dataSrc%\equipment\%%f !newpath!) else (echo %%f 已存在)
+)

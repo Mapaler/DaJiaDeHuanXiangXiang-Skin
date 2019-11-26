@@ -21,6 +21,15 @@ if not exist %dataDec%\char\charcute\%%~nf.webp (
  echo Q版 %%~nf.webp 已存在，跳过
 )
 )
+::转换道具图像
+title 正在转换道具图像
+for /f %%f in ('dir /b %dataDec%\equipment\*.png') do (
+if not exist %dataDec%\equipment\%%~nf.webp (
+ tools\cwebp.exe %dataDec%\equipment\%%f -q %quality% -o %dataDec%\equipment\%%~nf.webp
+) else (
+ echo 道具 %%~nf.webp 已存在，跳过
+)
+)
 title 转换完毕
 echo 转换完毕
 pause
