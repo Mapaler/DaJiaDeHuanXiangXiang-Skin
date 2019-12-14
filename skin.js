@@ -1,11 +1,13 @@
 //皮肤的排序函数
 function skinSort(cpFn) {
-    if (typeof(cpFn) == "undefined") cpFn = function() { return 0; }
+    //if (typeof(cpFn) == "undefined") cpFn = function() { return 0; }
     let ul = document.querySelector("#banner-list");
-    let sortArr = skinBannerArr.sort(cpFn);
+    let sortArr = cpFn != undefined ? skinBannerArr.sort(cpFn) : skinBannerArr;
+    let fragment = document.createDocumentFragment(); //创建节点用的临时空间
     sortArr.forEach(function(item) {
-        ul.appendChild(item);
+        fragment.appendChild(item);
     }); //把数组生成到列表里	
+    ul.appendChild(fragment);
 }
 //储存游戏数据文件的类
 class GameResInfo{
