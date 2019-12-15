@@ -7,7 +7,7 @@ if not exist %dataDec%\char (MKDIR %dataDec%\char)
 title 复制立绘
 echo 正在将立绘文件名转换为大写并复制到网页资源
 if not exist %dataDec%\char\charimg (MKDIR %dataDec%\char\charimg)
-for /f %%f in ('dir /b %dataSrc%\char\charimg\A*.png') do (
+for /f %%f in ('dir /b %dataSrc%\char\charimg\*.png') do (
 ::只保留文件名部分
 set str=%%~nf
 ::循环替换为大写，输出到!str!
@@ -19,7 +19,7 @@ if not exist !newpath! (copy %dataSrc%\char\charimg\%%f !newpath!) else (echo !s
 title 复制Q版
 echo 正在将Q版文件名转换为大写并复制到网页资源
 if not exist %dataDec%\char\charcute (MKDIR %dataDec%\char\charcute)
-for /f %%f in ('dir /b %dataSrc%\char\charcute\A*.png') do (
+for /f %%f in ('dir /b %dataSrc%\char\charcute\*.png') do (
 ::只保留文件名部分
 set str=%%~nf
 ::循环替换为大写，输出到!str!
