@@ -56,7 +56,7 @@ class GameResInfo{
 
 var GameResArray = [];
 //获取文档列表
-http.get('http://121.40.19.137:8070/TouHouServer/DownLoadList.txt', (res) => {
+http.get('http://121.43.196.228:8070/TouHouServer/DownLoadList.txt', (res) => {
 	const { statusCode } = res;
 	const contentType = res.headers['content-type'];
   
